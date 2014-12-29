@@ -1,5 +1,5 @@
 PROG =	dwmstatus
-SRCS =	main.c status.c
+SRCS =	loadavg.c main.c status.c
 MAN =
 
 CFLAGS +=	-I/usr/X11R6/include

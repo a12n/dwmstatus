@@ -3,6 +3,7 @@
 
 #include <X11/Xlib.h>
 
+#include "loadavg.h"
 #include "status.h"
 
 int
@@ -11,7 +12,7 @@ main(void)
     Display* display;
 
     struct status status[] = {
-
+        MAKE_LOADAVG(3.0)
     };
     const size_t n_status = sizeof(status) / sizeof(status[0]);
 
