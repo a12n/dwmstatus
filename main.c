@@ -5,6 +5,7 @@
 
 #include "loadavg.h"
 #include "status.h"
+#include "time.h"
 
 int
 main(void)
@@ -12,7 +13,8 @@ main(void)
     Display* display;
 
     struct status status[] = {
-        MAKE_LOADAVG(3.0)
+        MAKE_LOADAVG(3.0),
+        MAKE_TIME(1.0, "%a, %d %b %Y %T %z")
     };
     const size_t n_status = sizeof(status) / sizeof(status[0]);
 
