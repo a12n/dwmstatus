@@ -1,3 +1,5 @@
+OS !=	uname -s | tr '[A-Z]' '[a-z]'
+
 WARNINGS =	yes
 
 PROG =	dwmstatus
