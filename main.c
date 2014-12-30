@@ -3,22 +3,15 @@
 
 #include <X11/Xlib.h>
 
-#include "battery.h"
-#include "loadavg.h"
-#include "maildir.h"
 #include "status.h"
-#include "time.h"
+
+#include "config.h"
 
 int
 main(void)
 {
     Display* display;
 
-    struct status status[] = {
-        loadavg_make(3.0),
-        battery_make(10.0),
-        time_make(1.0, "%a, %d %b %Y %T %z")
-    };
     const size_t n_status = sizeof(status) / sizeof(status[0]);
 
     display = XOpenDisplay(NULL);
