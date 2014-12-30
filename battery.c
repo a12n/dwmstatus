@@ -56,5 +56,4 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
             snprintf(buf, buf_sz, "%5d %%", reply.battery_life);
         }
     }
-
 }
