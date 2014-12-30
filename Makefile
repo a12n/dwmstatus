@@ -1,3 +1,5 @@
+WARNINGS =	yes
+
 PROG =	dwmstatus
 SRCS =	battery.c loadavg.c maildir.c main.c status.c time.c
 MAN =
