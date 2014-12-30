@@ -46,18 +46,8 @@ open_subdir(const char* base, const char* sub)
     return opendir(path);
 }
 
-void
-maildir_free(void* opaque)
-{
-    struct maildir_state* state = (struct maildir_state*)opaque;
-
-    closedir(state->new_dirp);
-    closedir(state->cur_dirp);
-    free(state);
-}
-
 void*
-maildir_make(const char* path)
+maildir_alloc(const char* path)
 {
     struct maildir_state* state;
 
@@ -75,6 +65,16 @@ maildir_make(const char* path)
     }
 
     return state;
+}
+
+void
+maildir_free(void* opaque)
+{
+    struct maildir_state* state = (struct maildir_state*)opaque;
+
+    closedir(state->new_dirp);
+    closedir(state->cur_dirp);
+    free(state);
 }
 
 void
