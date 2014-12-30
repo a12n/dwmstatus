@@ -9,13 +9,12 @@
 #include "status.h"
 #include "time.h"
 
-#include "config.h"
-
 int
 main(void)
 {
     Display* display;
 
+#include "config.h"
     const size_t n_status = sizeof(status) / sizeof(status[0]);
 
     display = XOpenDisplay(NULL);
