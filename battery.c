@@ -1,3 +1,5 @@
+/* License: WTFPL (http://www.wtfpl.net/) */
+
 #include <sys/ioctl.h>
 #include <sys/param.h>
 

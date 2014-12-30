@@ -1,3 +1,5 @@
+/* License: WTFPL (http://www.wtfpl.net/) */
+
 #ifndef __MAILDIR_H_INCLUDED__
 #define __MAILDIR_H_INCLUDED__
 

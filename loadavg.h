@@ -1,3 +1,5 @@
+/* License: WTFPL (http://www.wtfpl.net/) */
+
 #ifndef __LOADAVG_H_INCLUDED__
 #define __LOADAVG_H_INCLUDED__
 

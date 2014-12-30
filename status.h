@@ -1,3 +1,5 @@
+/* License: WTFPL (http://www.wtfpl.net/) */
+
 #ifndef __STATUS_H_INCLUDED__
 #define __STATUS_H_INCLUDED__
 

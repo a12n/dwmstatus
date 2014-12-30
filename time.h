@@ -1,3 +1,5 @@
+/* License: WTFPL (http://www.wtfpl.net/) */
+
 #ifndef __TIME_H_INCLUDED__
 #define __TIME_H_INCLUDED__
 

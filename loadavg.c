@@ -1,3 +1,5 @@
+/* License: WTFPL (http://www.wtfpl.net/) */
+
 #include <stdio.h>
 #include <stdlib.h>
 
