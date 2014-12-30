@@ -3,7 +3,7 @@ OS !=	uname -s | tr '[A-Z]' '[a-z]'
 WARNINGS =	yes
 
 PROG =	dwmstatus
-SRCS =	battery.c loadavg.c maildir.c main.c status.c time.c
+SRCS =	battery-${OS}.c loadavg.c maildir.c main.c status.c time.c
 MAN =
 
 CFLAGS +=	-I/usr/X11R6/include
