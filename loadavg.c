@@ -4,11 +4,11 @@
 #include "loadavg.h"
 
 void
-loadavg_update(void* state, time_t now, char* buf, size_t buf_sz)
+loadavg_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     double loadavg[3];
 
-    (void)state;
+    (void)opaque;
     (void)now;
 
     getloadavg(loadavg, 3);
