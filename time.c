@@ -3,9 +3,9 @@
 #include "time.h"
 
 void
-time_update(void* state, time_t now, char* buf, size_t buf_sz)
+time_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
-    const char* format = (const char*)state;
+    const char* format = (const char*)opaque;
 
     strftime(buf, buf_sz, format, localtime(&now));
 }

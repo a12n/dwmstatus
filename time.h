@@ -7,7 +7,7 @@
     MAKE_STATUS((_interval), (_format), NULL, time_update)
 
 void
-time_update(void* state, time_t now, char* buf, size_t buf_sz)
+time_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 #ifdef __GNUC__
     __attribute__((nonnull))
 #endif  /* __GNUC__ */
