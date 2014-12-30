@@ -3,7 +3,7 @@
 
 #include "status.h"
 
-#define MAKE_LOADAVG(_interval)                             \
+#define loadavg_make(_interval)                             \
     status_make((_interval), NULL, NULL, loadavg_update)
 
 void

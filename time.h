@@ -3,7 +3,7 @@
 
 #include "status.h"
 
-#define MAKE_TIME(_interval, _format)                       \
+#define time_make(_interval, _format)                       \
     status_make((_interval), (_format), NULL, time_update)
 
 void

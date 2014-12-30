@@ -3,7 +3,7 @@
 
 #include "status.h"
 
-#define MAKE_MAILDIR(_interval, _path)                                  \
+#define maildir_make(_interval, _path)                                  \
     status_make((_interval), maildir_alloc(_path), maildir_free, maildir_update)
 
 void*

@@ -3,7 +3,7 @@
 
 #include "status.h"
 
-#define MAKE_BATTERY(_interval)                                         \
+#define battery_make(_interval)                                         \
     status_make((_interval), battery_alloc(), battery_free, battery_update)
 
 void*
