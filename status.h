@@ -16,8 +16,8 @@ struct status
     char buf[256];
 };
 
-#define MAKE_STATUS(_interval, _state, _free, _update)      \
-    { (_interval), (_state), (_free), (_update), 0, "\0" }
+#define status_make(_interval, _state, _free, _update)      \
+    { (_interval), (_state), (_free), (_update), 0, "" }
 
 char*
 status_concat_all(const struct status* status, size_t n_status,

@@ -4,7 +4,7 @@
 #include "status.h"
 
 #define MAKE_LOADAVG(_interval)                             \
-    MAKE_STATUS((_interval), NULL, NULL, loadavg_update)
+    status_make((_interval), NULL, NULL, loadavg_update)
 
 void
 loadavg_update(void* opaque, time_t now, char* buf, size_t buf_sz)

@@ -4,7 +4,7 @@
 #include "status.h"
 
 #define MAKE_BATTERY(_interval)                                         \
-    MAKE_STATUS((_interval), battery_make(), battery_free, battery_update)
+    status_make((_interval), battery_make(), battery_free, battery_update)
 
 void
 battery_free(void* opaque)

@@ -4,7 +4,7 @@
 #include "status.h"
 
 #define MAKE_TIME(_interval, _format)                       \
-    MAKE_STATUS((_interval), (_format), NULL, time_update)
+    status_make((_interval), (_format), NULL, time_update)
 
 void
 time_update(void* opaque, time_t now, char* buf, size_t buf_sz)

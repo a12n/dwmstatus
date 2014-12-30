@@ -4,7 +4,7 @@
 #include "status.h"
 
 #define MAKE_MAILDIR(_interval, _path)                                  \
-    MAKE_STATUS((_interval), maildir_make(_path), maildir_free, maildir_update)
+    status_make((_interval), maildir_make(_path), maildir_free, maildir_update)
 
 void
 maildir_free(void* opaque)
