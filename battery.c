@@ -53,7 +53,7 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
         if (reply.minutes_left != (u_int)-1) {
             snprintf(buf, buf_sz, "%3u min", reply.minutes_left);
         } else {
-            snprintf(buf, buf_sz, "%5u %%", (u_int)reply.battery_life);
+            snprintf(buf, buf_sz, "%3u %%", (u_int)reply.battery_life);
         }
     }
 }
