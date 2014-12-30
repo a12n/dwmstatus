@@ -47,13 +47,13 @@ open_subdir(const char* base, const char* sub)
 }
 
 void
-maildir_free(void* state)
+maildir_free(void* opaque)
 {
-    struct maildir_state* s = (struct maildir_state*)state;
+    struct maildir_state* state = (struct maildir_state*)opaque;
 
-    closedir(s->new_dirp);
-    closedir(s->cur_dirp);
-    free(s);
+    closedir(state->new_dirp);
+    closedir(state->cur_dirp);
+    free(state);
 }
 
 void*
@@ -78,15 +78,15 @@ maildir_make(const char* path)
 }
 
 void
-maildir_update(void* state, time_t now, char* buf, size_t buf_sz)
+maildir_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
-    struct maildir_state* s = (struct maildir_state*)state;
+    struct maildir_state* state = (struct maildir_state*)opaque;
 
     size_t n_cur;
     size_t n_new;
 
-    n_cur = count_files(s->cur_dirp);
-    n_new = count_files(s->new_dirp);
+    n_cur = count_files(state->cur_dirp);
+    n_new = count_files(state->new_dirp);
 
     snprintf(buf, buf_sz, "%zu/%zu", n_new, n_new + n_cur);
 }

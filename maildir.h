@@ -7,7 +7,7 @@
     MAKE_STATUS((_interval), maildir_make(_path), maildir_free, maildir_update)
 
 void
-maildir_free(void* state)
+maildir_free(void* opaque)
 #ifdef __GNUC__
     __attribute__((nonnull))
 #endif  /* __GNUC__ */
@@ -21,7 +21,7 @@ maildir_make(const char* path)
     ;
 
 void
-maildir_update(void* state, time_t now, char* buf, size_t buf_sz)
+maildir_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 #ifdef __GNUC__
     __attribute__((nonnull))
 #endif  /* __GNUC__ */
