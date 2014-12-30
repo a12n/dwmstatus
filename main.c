@@ -3,7 +3,11 @@
 
 #include <X11/Xlib.h>
 
+#include "battery.h"
+#include "loadavg.h"
+#include "maildir.h"
 #include "status.h"
+#include "time.h"
 
 #include "config.h"
 
