@@ -15,17 +15,8 @@ struct battery_state
     int apm_fd;
 };
 
-void
-battery_free(void* opaque)
-{
-    struct battery_state* state = (struct battery_state*)opaque;
-
-    close(state->apm_fd);
-    free(state);
-}
-
 void*
-battery_make(void)
+battery_alloc(void)
 {
     struct battery_state* state;
 
@@ -40,6 +31,15 @@ battery_make(void)
     }
 
     return state;
+}
+
+void
+battery_free(void* opaque)
+{
+    struct battery_state* state = (struct battery_state*)opaque;
+
+    close(state->apm_fd);
+    free(state);
 }
 
 void

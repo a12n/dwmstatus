@@ -4,19 +4,19 @@
 #include "status.h"
 
 #define MAKE_BATTERY(_interval)                                         \
-    status_make((_interval), battery_make(), battery_free, battery_update)
+    status_make((_interval), battery_alloc(), battery_free, battery_update)
+
+void*
+battery_alloc(void)
+#ifdef __GNUC__
+    __attribute__((malloc, warn_unused_result))
+#endif  /* __GNUC__ */
+    ;
 
 void
 battery_free(void* opaque)
 #ifdef __GNUC__
     __attribute__((nonnull))
-#endif  /* __GNUC__ */
-    ;
-
-void*
-battery_make(void)
-#ifdef __GNUC__
-    __attribute__((malloc, warn_unused_result))
 #endif  /* __GNUC__ */
     ;
 
