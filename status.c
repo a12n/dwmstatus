@@ -65,5 +65,5 @@ status_update_all(struct status* status, size_t n_status, time_t now)
             changed = 1;
         }
     }
-    return 1;
+    return changed;
 }
