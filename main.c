@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "battery.h"
+#include "cpu_temp.h"
 #include "loadavg.h"
 #include "maildir.h"
 #include "status.h"
