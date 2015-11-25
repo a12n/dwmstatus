@@ -87,6 +87,8 @@ maildir_update(void* opaque, time_t now, char* buf, size_t buf_sz)
     size_t n_cur;
     size_t n_new;
 
+    (void)now;
+
     n_cur = count_files(state->cur_dirp);
     n_new = count_files(state->new_dirp);
 
