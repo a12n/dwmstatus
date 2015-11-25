@@ -3,26 +3,40 @@
 #include <err.h>
 #include <unistd.h>
 
-#include <X11/Xlib.h>
-
 #include "battery.h"
 #include "loadavg.h"
 #include "maildir.h"
 #include "status.h"
 #include "time.h"
 
-int
-main(void)
+
+#include <X11/Xlib.h>
+
+Display* display;
+
+static void
+init(void)
 {
-    Display* display;
-
-#include "config.h"
-    const size_t n_status = sizeof(status) / sizeof(status[0]);
-
     display = XOpenDisplay(NULL);
     if (display == NULL) {
         errx(1, "Couldn't open display");
     }
+}
+
+static void
+set_status(const char* str)
+{
+    XStoreName(display, DefaultRootWindow(display), str);
+    XSync(display, False);
+}
+
+int
+main(void)
+{
+#include "config.h"
+    const size_t n_status = sizeof(status) / sizeof(status[0]);
+
+    init();
 
     while (1) {
         if (status_update_all(status, n_status, time(NULL))) {
@@ -30,8 +44,7 @@ main(void)
 
             status_concat_all(status, n_status, buf, sizeof(buf), " • ");
 
-            XStoreName(display, DefaultRootWindow(display), buf);
-            XSync(display, False);
+            set_status(buf);
         }
         sleep(1);
     }
