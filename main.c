@@ -33,6 +33,8 @@ set_status(const char* str)
 
 #else  /* !defined(_NO_X11) */
 
+#include <stdio.h>
+
 static void
 init(void)
 {
