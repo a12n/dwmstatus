@@ -9,6 +9,9 @@ cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     FILE* pipe;
 
+    (void)opaque;
+    (void)now;
+
     pipe = popen("sysctl hw.sensors.cpu0", "r");
     if (pipe != NULL) {
         float temp;
