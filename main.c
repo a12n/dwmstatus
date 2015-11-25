@@ -9,6 +9,7 @@
 #include "status.h"
 #include "time.h"
 
+#if !defined(_NO_X11)
 
 #include <X11/Xlib.h>
 
@@ -29,6 +30,21 @@ set_status(const char* str)
     XStoreName(display, DefaultRootWindow(display), str);
     XSync(display, False);
 }
+
+#else  /* !defined(_NO_X11) */
+
+static void
+init(void)
+{
+}
+
+static void
+set_status(const char* str)
+{
+    puts(str);
+}
+
+#endif /* !defined(_NO_X11) */
 
 int
 main(void)
