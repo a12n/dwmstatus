@@ -51,6 +51,8 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
     struct apm_power_info reply;
     struct battery_state* state = (struct battery_state*)opaque;
 
+    (void)now;
+
     if (ioctl(state->apm_fd, APM_IOC_GETPOWER, &reply) == 0) {
         if (reply.minutes_left != (u_int)-1) {
             snprintf(buf, buf_sz, "%3u min", reply.minutes_left);
