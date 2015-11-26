@@ -1,5 +1,7 @@
 /* License: WTFPL (http://www.wtfpl.net/) */
 
+#include <stdio.h>
+
 #include "cpu_temp.h"
 
 void
