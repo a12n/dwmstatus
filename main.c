@@ -52,7 +52,9 @@ set_status(const char* str)
 int
 main(void)
 {
+    struct status status[] = {
 #include "config.h"
+    };
     const size_t n_status = sizeof(status) / sizeof(status[0]);
 
     init();
