@@ -17,7 +17,7 @@ cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
         float temp;
 
         if (fscanf(pipe, "hw.sensors.cpu0.temp0=%f degC", &temp) == 1) {
-            snprintf(buf, buf_sz, "%2.0f °", temp);
+            snprintf(buf, buf_sz, "%2.0f °C", temp);
         }
         pclose(pipe);
     }
