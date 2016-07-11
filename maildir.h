@@ -5,8 +5,12 @@
 
 #include "status.h"
 
-#define maildir_make(_interval, _path)                                  \
-    status_make((_interval), maildir_alloc(_path), maildir_free, maildir_update)
+struct status
+maildir_make(double interval, const char* path)
+#ifdef __GNUC__
+    __attribute__((nonnull))
+#endif  /* __GNUC__ */
+    ;
 
 void*
 maildir_alloc(const char* path)

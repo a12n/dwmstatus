@@ -94,3 +94,10 @@ maildir_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 
     snprintf(buf, buf_sz, "%zu/%zu", n_new, n_new + n_cur);
 }
+
+struct status
+maildir_make(double interval, const char* path)
+{
+    return status_make(
+        interval, maildir_alloc(path), maildir_free, maildir_update);
+}
