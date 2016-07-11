@@ -1,12 +1,11 @@
 /* License: WTFPL (http://www.wtfpl.net/) */
 
 #include <err.h>
+#include <stdio.h>
 #include <unistd.h>
 
-#include "battery.h"
-#include "cpu_temp.h"
+#include "config2.h"
 #include "loadavg.h"
-#include "maildir.h"
 #include "status.h"
 #include "time.h"
 
@@ -54,12 +53,28 @@ set_status(const char* str)
 #endif  /* MAX_N_STATUS */
 
 int
-main(void)
+main(int argc, char** argv)
 {
-    struct status status[] = {
-#include "config.h"
-    };
-    const size_t n_status = sizeof(status) / sizeof(status[0]);
+    struct status status[MAX_N_STATUS];
+    size_t n_status = 0;
+
+    if (argc > 1) {
+        FILE* config;
+
+        config = fopen(argv[1], "r");
+        if (config != NULL) {
+            size_t n = MAX_N_STATUS;
+
+            config_parse(config, status, &n);
+            n_status = n;
+            fclose(config);
+        } else {
+            err(1, "Couldn't open config file \"%s\"", argv[1]);
+        }
+    } else {
+        status[n_status++] = loadavg_status(3.0);
+        status[n_status++] = time_status(1.0, "%a, %d %b %Y %T %z");
+    }
 
     init();
 
