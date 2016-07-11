@@ -8,7 +8,7 @@
 
 struct battery_state
 {
-    /* TODO */
+    FILE* capacity;
 };
 
 static void*
@@ -21,7 +21,12 @@ battery_alloc(void)
         err(1, "battery: couldn't allocate state");
     }
 
-    /* TODO */
+    state->capacity = fopen("/sys/class/power_supply/BAT0/capacity", "r");
+    if (state->capacity == NULL) {
+        err(1, "battery: couldn't open capacity file for BAT0");
+    }
+
+    setvbuf(state->capacity, NULL, _IONBF, 0);
 
     return state;
 }
@@ -31,19 +36,21 @@ battery_free(void* opaque)
 {
     struct battery_state* state = (struct battery_state*)opaque;
 
-    /* TODO */
-
+    fclose(state->capacity);
     free(state);
 }
 
 static void
 battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
-    /* TODO */
-    (void)opaque;
+    struct battery_state* state = (struct battery_state*)opaque;
+    int capacity = 0;
+
     (void)now;
 
-    snprintf(buf, buf_sz, "N/A");
+    rewind(state->capacity);
+    fscanf(state->capacity, "%d", &capacity);
+    snprintf(buf, buf_sz, "%3d %%", capacity);
 }
 
 struct status
