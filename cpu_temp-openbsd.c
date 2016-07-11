@@ -4,7 +4,7 @@
 
 #include "cpu_temp.h"
 
-void
+static void
 cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     FILE* pipe;
@@ -21,4 +21,10 @@ cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
         }
         pclose(pipe);
     }
+}
+
+struct status
+cpu_temp_make(double interval)
+{
+    return status_make(interval, NULL, NULL, cpu_temp_update);
 }

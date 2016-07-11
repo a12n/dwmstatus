@@ -5,14 +5,7 @@
 
 #include "status.h"
 
-#define cpu_temp_make(_interval)                            \
-    status_make((_interval), NULL, NULL, cpu_temp_update)
-
-void
-cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
-#ifdef __GNUC__
-    __attribute__((nonnull))
-#endif  /* __GNUC__ */
-    ;
+struct status
+cpu_temp_make(double interval);
 
 #endif  /* __CPU_TEMP_H_INCLUDED__ */
