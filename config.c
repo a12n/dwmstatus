@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #include "battery.h"
-#include "config2.h"
+#include "config.h"
 #include "cpu_temp.h"
 #include "loadavg.h"
 #include "maildir.h"

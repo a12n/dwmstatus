@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "config2.h"
+#include "config.h"
 #include "loadavg.h"
 #include "status.h"
 #include "time.h"
