@@ -49,6 +49,10 @@ set_status(const char* str)
 
 #endif /* !defined(_NO_X11) */
 
+#ifndef MAX_N_STATUS
+#   define MAX_N_STATUS 16
+#endif  /* MAX_N_STATUS */
+
 int
 main(void)
 {
