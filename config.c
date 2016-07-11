@@ -8,13 +8,13 @@
 #include "maildir.h"
 #include "time.h"
 
-void
-config_parse(FILE* file, struct status* status, size_t* n_status)
+size_t
+config_parse(FILE* file, struct status* status, size_t max_n_status)
 {
     char line[384];
     size_t n = 0;
 
-    while (n < *n_status && fgets(line, sizeof(line), file) != NULL) {
+    while (n < max_n_status && fgets(line, sizeof(line), file) != NULL) {
         char s[256];
         double f;
 
@@ -37,5 +37,5 @@ config_parse(FILE* file, struct status* status, size_t* n_status)
         err(1, "Couldn't read config file");
     }
 
-    *n_status = n;
+    return n;
 }

@@ -63,10 +63,7 @@ main(int argc, char** argv)
 
         config = fopen(argv[1], "r");
         if (config != NULL) {
-            size_t n = MAX_N_STATUS;
-
-            config_parse(config, status, &n);
-            n_status = n;
+            n_status = config_parse(config, status, MAX_N_STATUS);
             fclose(config);
         } else {
             err(1, "Couldn't open config file \"%s\"", argv[1]);

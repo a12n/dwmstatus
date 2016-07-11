@@ -5,8 +5,8 @@
 
 #include "status.h"
 
-void
-config_parse(FILE* file, struct status* status, size_t* n_status)
+size_t
+config_parse(FILE* file, struct status* status, size_t max_n_status)
 #ifdef __GNUC__
     __attribute__((nonnull))
 #endif  /* __GNUC__ */
