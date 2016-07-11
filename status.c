@@ -4,6 +4,14 @@
 
 #include "status.h"
 
+struct status
+status_make(double interval, void* state, void (*free)(void*),
+            void (*update)(void*, time_t, char*, size_t))
+{
+    struct status ans = { interval, state, free, update, 0, "" };
+    return ans;
+}
+
 char*
 status_concat_all(const struct status* status, size_t n_status,
                   char* ans, size_t ans_sz, const char* sep)
