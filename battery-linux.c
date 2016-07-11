@@ -11,7 +11,7 @@ struct battery_state
     /* TODO */
 };
 
-void*
+static void*
 battery_alloc(void)
 {
     struct battery_state* state;
@@ -26,7 +26,7 @@ battery_alloc(void)
     return state;
 }
 
-void
+static void
 battery_free(void* opaque)
 {
     struct battery_state* state = (struct battery_state*)opaque;
@@ -36,7 +36,7 @@ battery_free(void* opaque)
     free(state);
 }
 
-void
+static void
 battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     /* TODO */
@@ -44,4 +44,10 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
     (void)now;
 
     snprintf(buf, buf_sz, "N/A");
+}
+
+struct status
+battery_make(double interval)
+{
+    return status_make(interval, battery_alloc(), battery_free, battery_update);
 }

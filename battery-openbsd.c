@@ -18,7 +18,7 @@ struct battery_state
     int apm_fd;
 };
 
-void*
+static void*
 battery_alloc(void)
 {
     struct battery_state* state;
@@ -36,7 +36,7 @@ battery_alloc(void)
     return state;
 }
 
-void
+static void
 battery_free(void* opaque)
 {
     struct battery_state* state = (struct battery_state*)opaque;
@@ -45,7 +45,7 @@ battery_free(void* opaque)
     free(state);
 }
 
-void
+static void
 battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     struct apm_power_info reply;
@@ -60,4 +60,10 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
             snprintf(buf, buf_sz, "%3u %%", (u_int)reply.battery_life);
         }
     }
+}
+
+struct status
+battery_make(double interval)
+{
+    return status_make(interval, battery_alloc(), battery_free, battery_update);
 }
