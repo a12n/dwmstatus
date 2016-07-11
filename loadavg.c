@@ -19,7 +19,7 @@ loadavg_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 }
 
 struct status
-loadavg_make(double interval)
+loadavg_status(double interval)
 {
     return status_make(interval, NULL, NULL, loadavg_update);
 }

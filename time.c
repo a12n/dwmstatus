@@ -14,7 +14,7 @@ time_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 }
 
 struct status
-time_make(double interval, const char* format)
+time_status(double interval, const char* format)
 {
     return status_make(interval, strdup(format), free, time_update);
 }

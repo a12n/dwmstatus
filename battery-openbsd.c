@@ -63,7 +63,7 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 }
 
 struct status
-battery_make(double interval)
+battery_status(double interval)
 {
     return status_make(interval, battery_alloc(), battery_free, battery_update);
 }

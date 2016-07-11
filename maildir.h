@@ -6,7 +6,7 @@
 #include "status.h"
 
 struct status
-maildir_make(double interval, const char* path)
+maildir_status(double interval, const char* path)
 #ifdef __GNUC__
     __attribute__((nonnull))
 #endif  /* __GNUC__ */

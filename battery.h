@@ -6,6 +6,6 @@
 #include "status.h"
 
 struct status
-battery_make(double interval);
+battery_status(double interval);
 
 #endif  /* __BATTERY_H_INCLUDED__ */

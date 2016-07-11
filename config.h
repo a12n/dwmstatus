@@ -1,2 +1,2 @@
-loadavg_make(3.0),
-time_make(1.0, "%a, %d %b %Y %T %z")
+loadavg_status(3.0),
+time_status(1.0, "%a, %d %b %Y %T %z")

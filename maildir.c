@@ -96,7 +96,7 @@ maildir_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 }
 
 struct status
-maildir_make(double interval, const char* path)
+maildir_status(double interval, const char* path)
 {
     return status_make(
         interval, maildir_alloc(path), maildir_free, maildir_update);

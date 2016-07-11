@@ -6,7 +6,7 @@
 #include "status.h"
 
 struct status
-time_make(double interval, const char* format)
+time_status(double interval, const char* format)
 #ifdef __GNUC__
     __attribute__((nonnull))
 #endif  /* __GNUC__ */

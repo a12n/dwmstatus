@@ -6,6 +6,6 @@
 #include "status.h"
 
 struct status
-cpu_temp_make(double interval);
+cpu_temp_status(double interval);
 
 #endif  /* __CPU_TEMP_H_INCLUDED__ */

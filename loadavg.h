@@ -6,6 +6,6 @@
 #include "status.h"
 
 struct status
-loadavg_make(double interval);
+loadavg_status(double interval);
 
 #endif  /* __LOADAVG_H_INCLUDED__ */

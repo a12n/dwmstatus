@@ -24,7 +24,7 @@ cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 }
 
 struct status
-cpu_temp_make(double interval)
+cpu_temp_status(double interval)
 {
     return status_make(interval, NULL, NULL, cpu_temp_update);
 }
