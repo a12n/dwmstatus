@@ -5,7 +5,7 @@
 
 #include "time.h"
 
-void
+static void
 time_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     const char* format = (const char*)opaque;

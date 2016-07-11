@@ -12,11 +12,4 @@ time_make(double interval, const char* format)
 #endif  /* __GNUC__ */
     ;
 
-void
-time_update(void* opaque, time_t now, char* buf, size_t buf_sz)
-#ifdef __GNUC__
-    __attribute__((nonnull))
-#endif  /* __GNUC__ */
-    ;
-
 #endif  /* __TIME_H_INCLUDED__ */
