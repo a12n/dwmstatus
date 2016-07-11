@@ -48,7 +48,7 @@ open_subdir(const char* base, const char* sub)
     return opendir(path);
 }
 
-void*
+static void*
 maildir_alloc(const char* path)
 {
     struct maildir_state* state;
@@ -69,7 +69,7 @@ maildir_alloc(const char* path)
     return state;
 }
 
-void
+static void
 maildir_free(void* opaque)
 {
     struct maildir_state* state = (struct maildir_state*)opaque;
@@ -79,7 +79,7 @@ maildir_free(void* opaque)
     free(state);
 }
 
-void
+static void
 maildir_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     struct maildir_state* state = (struct maildir_state*)opaque;
