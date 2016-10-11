@@ -6,10 +6,6 @@
 #include "status.h"
 
 struct status
-time_status(double interval, const char* format)
-#ifdef __GNUC__
-    __attribute__((nonnull))
-#endif  /* __GNUC__ */
-    ;
+time_status(double interval, const char* format);
 
 #endif  /* __TIME_H_INCLUDED__ */
