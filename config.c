@@ -26,6 +26,8 @@ config_parse(FILE* file, struct status* status, size_t max_n_status)
             status[n++] = loadavg_status(f);
         } else if (sscanf(line, " maildir %lf %255[ -~] ", &f, s) == 2) {
             status[n++] = maildir_status(f, s);
+        } else if (sscanf(line, " maildir %lf ", &f) == 1) {
+            status[n++] = maildir_status(f, NULL);
         } else if (sscanf(line, " time %lf %255[ -~] ", &f, s) == 2) {
             status[n++] = time_status(f, s);
         } else if (sscanf(line, " time %lf ", &f) == 1) {
