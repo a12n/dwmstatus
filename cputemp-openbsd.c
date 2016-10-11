@@ -2,10 +2,10 @@
 
 #include <stdio.h>
 
-#include "cpu_temp.h"
+#include "cputemp.h"
 
 static void
-cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
+cputemp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     FILE* pipe;
 
@@ -24,7 +24,7 @@ cpu_temp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 }
 
 struct status
-cpu_temp_status(double interval)
+cputemp_status(double interval)
 {
-    return status_make(interval, NULL, NULL, cpu_temp_update);
+    return status_make(interval, NULL, NULL, cputemp_update);
 }

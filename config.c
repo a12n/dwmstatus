@@ -3,7 +3,7 @@
 
 #include "battery.h"
 #include "config.h"
-#include "cpu_temp.h"
+#include "cputemp.h"
 #include "loadavg.h"
 #include "maildir.h"
 #include "time.h"
@@ -20,8 +20,8 @@ config_parse(FILE* file, struct status* status, size_t max_n_status)
 
         if (sscanf(line, " battery %lf ", &f) == 1) {
             status[n++] = battery_status(f);
-        } else if (sscanf(line, " cpu_temp %lf ", &f) == 1) {
-            status[n++] = cpu_temp_status(f);
+        } else if (sscanf(line, " cputemp %lf ", &f) == 1) {
+            status[n++] = cputemp_status(f);
         } else if (sscanf(line, " loadavg %lf ", &f) == 1) {
             status[n++] = loadavg_status(f);
         } else if (sscanf(line, " maildir %lf %255[ -~] ", &f, s) == 2) {
