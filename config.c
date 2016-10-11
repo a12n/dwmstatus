@@ -28,6 +28,8 @@ config_parse(FILE* file, struct status* status, size_t max_n_status)
             status[n++] = maildir_status(f, s);
         } else if (sscanf(line, " time %lf %255[ -~] ", &f, s) == 2) {
             status[n++] = time_status(f, s);
+        } else if (sscanf(line, " time %lf ", &f) == 1) {
+            status[n++] = time_status(f, NULL);
         } else {
             warnx("Invalid status descr \"%s\"", line);
         }
