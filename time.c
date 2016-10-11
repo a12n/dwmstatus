@@ -16,5 +16,8 @@ time_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 struct status
 time_status(double interval, const char* format)
 {
+    if (format == NULL) {
+        format = "%a, %d %b %Y %T %Z";
+    }
     return status_make(interval, strdup(format), free, time_update);
 }

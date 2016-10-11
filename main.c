@@ -70,7 +70,7 @@ main(int argc, char** argv)
         }
     } else {
         status[n_status++] = loadavg_status(3.0);
-        status[n_status++] = time_status(1.0, "%a, %d %b %Y %T %z");
+        status[n_status++] = time_status(1.0, NULL);
     }
 
     init();
