@@ -6,10 +6,6 @@
 #include "status.h"
 
 struct status
-maildir_status(double interval, const char* path)
-#ifdef __GNUC__
-    __attribute__((nonnull))
-#endif  /* __GNUC__ */
-    ;
+maildir_status(double interval, const char* path);
 
 #endif  /* __MAILDIR_H_INCLUDED__ */

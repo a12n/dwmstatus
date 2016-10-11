@@ -95,9 +95,34 @@ maildir_update(void* opaque, time_t now, char* buf, size_t buf_sz)
     snprintf(buf, buf_sz, "%zu/%zu", n_new, n_new + n_cur);
 }
 
+static const char*
+maildir_default_path(void)
+{
+    static char path[256];
+
+    const char* email;
+    const char* home;
+
+    home = getenv("HOME");
+    if (home != NULL) {
+        email = getenv("EMAIL");
+        if (email != NULL) {
+            snprintf(path, sizeof(path), "%s/mail/%s/INBOX", home, email);
+        } else {
+            snprintf(path, sizeof(path), "%s/Maildir", home);
+        }
+        return path;
+    } else {
+        return NULL;
+    }
+}
+
 struct status
 maildir_status(double interval, const char* path)
 {
+    if (path == NULL) {
+        path = maildir_default_path();
+    }
     return status_make(
         interval, maildir_alloc(path), maildir_free, maildir_update);
 }
