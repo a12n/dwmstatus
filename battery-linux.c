@@ -50,7 +50,7 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 
     (void)now;
 
-    rewind(state->capacity);
+    state->capacity = freopen(CAPACITY_PATH, "r", state->capacity);
     fscanf(state->capacity, "%d", &capacity);
     snprintf(buf, buf_sz, "%3d %%", capacity);
 }
