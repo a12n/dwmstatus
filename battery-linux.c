@@ -6,6 +6,8 @@
 
 #include "battery.h"
 
+#define CAPACITY_PATH "/sys/class/power_supply/BAT0/capacity"
+
 struct battery_state
 {
     FILE* capacity;
@@ -21,7 +23,7 @@ battery_alloc(void)
         err(1, "battery: couldn't allocate state");
     }
 
-    state->capacity = fopen("/sys/class/power_supply/BAT0/capacity", "r");
+    state->capacity = fopen(CAPACITY_PATH, "r");
     if (state->capacity == NULL) {
         err(1, "battery: couldn't open capacity file for BAT0");
     }
