@@ -14,6 +14,14 @@ CFLAGS +=	-I/usr/X11R6/include
 LDFLAGS +=	-L/usr/X11R6/lib
 LDADD +=	-lX11
 
+# Remove these lines to build without libicu
+OBJS +=	utime.o
+UTIME_CFLAGS !=	pkg-config --cflags icu-i18n
+UTIME_LDADD !=	pkg-config --libs icu-i18n
+CFLAGS +=	-D_WITH_UTIME
+CFLAGS +=	${UTIME_CFLAGS}
+LDADD +=	${UTIME_LDADD}
+
 RM ?=	rm -f
 
 .PHONY: all clean
