@@ -7,6 +7,9 @@
 #include "loadavg.h"
 #include "maildir.h"
 #include "time.h"
+#ifdef _WITH_UTIME
+#   include "utime.h"
+#endif  /* _WITH_UTIME */
 
 size_t
 config_parse(FILE* file, struct status* status, size_t max_n_status)
@@ -32,6 +35,12 @@ config_parse(FILE* file, struct status* status, size_t max_n_status)
             status[n++] = time_status(f, s);
         } else if (sscanf(line, " time %lf ", &f) == 1) {
             status[n++] = time_status(f, NULL);
+#ifdef _WITH_UTIME
+        } else if (sscanf(line, " utime %lf %255[ -~] ", &f, s) == 2) {
+            status[n++] = utime_status(f, s);
+        } else if (sscanf(line, " utime %lf ", &f) == 1) {
+            status[n++] = utime_status(f, NULL);
+#endif  /* _WITH_UTIME */
         } else {
             warnx("Invalid status descr \"%s\"", line);
         }
