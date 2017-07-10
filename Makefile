@@ -5,6 +5,7 @@ OBJS =	battery-${OS}.o config.o cputemp-${OS}.o loadavg.o maildir.o	\
 		main.o status.o time.o
 
 CFLAGS +=	-Wall -Wextra
+CFLAGS +=	-std=c99
 
 # Add these lines to build in stdout mode
 # CFLAGS +=	-D_NO_X11
