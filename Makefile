@@ -4,6 +4,7 @@ PROG =	dwmstatus
 OBJS =	battery-${OS}.o config.o cputemp-${OS}.o loadavg.o maildir.o	\
 		main.o status.o time.o
 
+CFLAGS +=	-D_BSD_SOURCE
 CFLAGS +=	-Wall -Wextra
 CFLAGS +=	-std=c99
 
