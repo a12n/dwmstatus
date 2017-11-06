@@ -52,7 +52,7 @@ status_free_all(struct status* status, size_t n_status)
 int
 status_update(struct status* status, time_t now)
 {
-    if (difftime(now, status->last) >= status->interval) {
+    if (difftime(now, status->last) >= status->interval || now < status->last) {
         if (status->update != NULL) {
             status->update(status->state, now, status->buf, sizeof(status->buf));
         }
