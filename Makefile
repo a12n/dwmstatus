@@ -2,7 +2,7 @@ OS !=	uname -s | tr '[A-Z]' '[a-z]'
 
 PROG =	dwmstatus
 OBJS =	battery-${OS}.o config.o cputemp-${OS}.o loadavg.o maildir.o	\
-		main.o status.o time.o pfile.o
+		main.o status.o time.o pfile.o mem.o
 
 CFLAGS +=	-D_BSD_SOURCE
 CFLAGS +=	-Wall -Wextra
