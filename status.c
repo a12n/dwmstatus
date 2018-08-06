@@ -21,12 +21,14 @@ status_concat_all(const struct status* status, size_t n_status,
     /* TODO: Check ans_sz */
     (void)ans_sz;
 
+    strcat(ans, " ");
     for (i = 0; i < n_status; i++) {
         if (i != 0) {
             strcat(ans, sep);
         }
         strcat(ans, status[i].buf);
     }
+    strcat(ans, " ");
     return ans;
 }
 
