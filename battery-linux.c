@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "battery.h"
+#include "mem.h"
 
 #define CAPACITY_PATH "/sys/class/power_supply/BAT0/capacity"
 
@@ -18,10 +19,7 @@ battery_alloc(void)
 {
     struct battery_state* state;
 
-    state = calloc(1, sizeof(struct battery_state));
-    if (state == NULL) {
-        err(1, "battery: couldn't allocate state");
-    }
+    state = calloc_err(1, sizeof(struct battery_state));
 
     state->capacity = fopen(CAPACITY_PATH, "r");
     if (state->capacity == NULL) {
