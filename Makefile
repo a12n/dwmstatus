@@ -7,6 +7,7 @@ OBJS =	battery-${OS}.o config.o cputemp-${OS}.o loadavg.o maildir.o	\
 CFLAGS +=	-D_BSD_SOURCE
 CFLAGS +=	-Wall -Wextra
 CFLAGS +=	-std=c99
+LDADD +=	-lm
 
 # Add these lines to build in stdout mode
 # CFLAGS +=	-D_NO_X11
