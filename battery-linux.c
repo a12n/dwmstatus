@@ -12,10 +12,12 @@
 
 #define N_BAT 4
 #define CAPACITY_PATH "/sys/class/power_supply/BAT?/capacity"
+#define ONLINE_PATH "/sys/class/power_supply/AC/online"
 
 struct battery_state
 {
     FILE* capacity[N_BAT];
+    FILE* online;
 };
 
 static void*
@@ -24,6 +26,8 @@ battery_alloc(void)
     struct battery_state* state;
 
     state = calloc_err(1, sizeof(struct battery_state));
+
+    state->online = pfile_open_err(ONLINE_PATH);
 
     int ok = 0;
     for (int i = 0; i < N_BAT; ++i) {
@@ -47,6 +51,7 @@ battery_free(void* opaque)
     for (int i = 0; i < N_BAT; ++i) {
         pfile_close(state->capacity[i]);
     }
+    pfile_close(state->online);
     free(state);
 }
 
