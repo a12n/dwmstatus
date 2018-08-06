@@ -1,10 +1,11 @@
 /* License: WTFPL (http://www.wtfpl.net/) */
 
-#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "cputemp.h"
+#include "mem.h"
+#include "pfile.h"
 
 struct cputemp_state
 {
@@ -16,13 +17,8 @@ cputemp_alloc(void)
 {
     struct cputemp_state* state;
 
-    state = calloc(1, sizeof(struct cputemp_state));
-    if (state == NULL) err(1, "cputemp: couldn't allocate state");
-
-    state->temp = fopen("/sys/class/thermal/thermal_zone0/temp", "r");
-    if (state->temp == NULL) err(1, "cputemp: couldn't open temp file");
-
-    setvbuf(state->temp, NULL, _IONBF, 0);
+    state = calloc_err(1, sizeof(struct cputemp_state));
+    state->temp = pfile_open_err("/sys/class/hwmon/hwmon0/temp1_input");
 
     return state;
 }
@@ -32,7 +28,7 @@ cputemp_free(void* opaque)
 {
     struct cputemp_state* state = (struct cputemp_state*)opaque;
 
-    fclose(state->temp);
+    pfile_close(state->temp);
     free(state);
 }
 
@@ -40,13 +36,10 @@ static void
 cputemp_update(void* opaque, time_t now, char* buf, size_t buf_sz)
 {
     struct cputemp_state* state = (struct cputemp_state*)opaque;
-    float temp = 0.0f;
 
     (void)now;
 
-    rewind(state->temp);
-    fscanf(state->temp, "%f", &temp);
-    snprintf(buf, buf_sz, "%2.0f °C", temp / 1000.0f);
+    snprintf(buf, buf_sz, "%2.0lf °C", pfile_read_double(state->temp) / 1000.0);
 }
 
 struct status
