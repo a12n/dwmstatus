@@ -18,6 +18,7 @@ struct battery_state
 {
     FILE* capacity[N_BAT];
     FILE* online;
+    int anim_frame;
 };
 
 static void*
@@ -61,6 +62,14 @@ battery_update(void* opaque, time_t now, char* buf, size_t buf_sz)
     struct battery_state* state = (struct battery_state*)opaque;
 
     (void)now;
+
+    if (! pfile_read_long(state->online)) {
+        state->anim_frame = (state->anim_frame + 1) % 2;
+        if (state->anim_frame == 0) {
+            snprintf(buf, buf_sz, "▼▼▼ %%");
+            return;
+        }
+    }
 
     long capacity = 0;
     long total = 0;
