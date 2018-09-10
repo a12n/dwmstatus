@@ -2,6 +2,7 @@
 #include "config.hpp"
 #include "cputemp.hpp"
 #include "loadavg.hpp"
+#include "maildir.hpp"
 #include "time.hpp"
 #ifdef DWMSTATUS_WITH_UTIME
 #include "utime.hpp"
@@ -32,6 +33,7 @@ read_status(istream& config)
     if (id == "battery") { raw_status = new battery_status; }
     else if (id == "cputemp") { raw_status = new cputemp_status; }
     else if (id == "loadavg") { raw_status = new loadavg_status; }
+    else if (id == "maildir") { raw_status = new maildir_status(config); }
     else if (id == "time") { raw_status = new time_status(config); }
 #ifdef DWMSTATUS_WITH_UTIME
     else if (id == "utime") { raw_status = new utime_status(config); }
