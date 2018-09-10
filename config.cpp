@@ -1,3 +1,4 @@
+#include "battery.hpp"
 #include "config.hpp"
 #include "loadavg.hpp"
 #include "time.hpp"
@@ -27,8 +28,9 @@ read_status(istream& config)
 
     basic_status* raw_status = nullptr;
 
-    if (id == "time") { raw_status = new time_status(config); }
+    if (id == "battery") { raw_status = new battery_status; }
     else if (id == "loadavg") { raw_status = new loadavg_status; }
+    else if (id == "time") { raw_status = new time_status(config); }
 #ifdef DWMSTATUS_WITH_UTIME
     else if (id == "utime") { raw_status = new utime_status(config); }
 #endif  // DWMSTATUS_WITH_UTIME
