@@ -1,4 +1,5 @@
 #include "config.hpp"
+#include "loadavg.hpp"
 #include "time.hpp"
 
 namespace dwmstatus {
@@ -24,6 +25,7 @@ read_status(istream& config)
     basic_status* raw_status = nullptr;
 
     if (id == "time") { raw_status = new time_status(config); }
+    else if (id == "loadavg") { raw_status = new loadavg_status; }
     else { throw runtime_error("unknown status identifier"); }
 
     return make_unique<status>(seconds(dt), raw_status);

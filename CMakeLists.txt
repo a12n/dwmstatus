@@ -31,6 +31,7 @@ include_directories(
 set(DWMSTATUS_SRCS
   config.cpp
   display.cpp
+  loadavg.cpp
   main.cpp
   status.cpp
   time.cpp
