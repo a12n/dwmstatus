@@ -43,7 +43,7 @@ read_dir_set(istream& config)
 {
     set<string> ans;
     string dir;
-    while (config >> dir) {
+    while (config >> quoted(dir)) {
         ans.insert(dir);
     }
     return ans;
