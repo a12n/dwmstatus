@@ -68,15 +68,11 @@ maildir_status::maildir_status(istream& config) :
 string
 maildir_status::update(const system_clock::time_point&)
 {
-    size_t n_cur = 0;
     size_t n_new = 0;
     for (const auto& p : dirs) {
-        n_cur += count_files(fs::path(p) / "cur");
         n_new += count_files(fs::path(p) / "new");
     }
-    ostringstream out;
-    out << n_new << "/" << (n_new + n_cur);
-    return out.str();
+    return to_string(n_new);
 }
 
 } // namespace dwmstatus
