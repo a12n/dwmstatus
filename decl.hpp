@@ -26,6 +26,7 @@ using std::quoted;
 using std::runtime_error;
 using std::set;
 using std::string;
+using std::to_string;
 using std::unique_ptr;
 using std::vector;
 

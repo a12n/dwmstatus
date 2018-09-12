@@ -5,7 +5,6 @@
 namespace dwmstatus {
 
 using std::ios_base;
-using std::to_string;
 
 battery_status::battery_status() :
     online("/sys/class/power_supply/AC/online"),

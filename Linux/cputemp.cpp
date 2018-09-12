@@ -2,8 +2,6 @@
 
 namespace dwmstatus {
 
-using std::to_string;
-
 cputemp_status::cputemp_status() :
     hwmon("/sys/class/hwmon/hwmon0/temp1_input")
 {
