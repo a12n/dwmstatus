@@ -19,7 +19,7 @@ public:
     update(const system_clock::time_point& t) override;
 
 private:
-    pfile online;
+    vector<pfile> status;
     vector<pfile> capacity;
     bool show_disch;
 };
