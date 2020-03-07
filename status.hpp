@@ -7,6 +7,9 @@ namespace dwmstatus {
 class basic_status
 {
 public:
+    virtual
+    ~basic_status() = default;
+
     virtual string
     update(const system_clock::time_point& t) = 0;
 };
