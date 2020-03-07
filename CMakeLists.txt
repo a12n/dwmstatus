@@ -7,21 +7,14 @@ include(FindPkgConfig)
 
 project(dwmstatus)
 
+set(CMAKE_CXX_EXTENSIONS off)
+set(CMAKE_CXX_STANDARD 17)
+
 #------------------------------------------------------------------------------
 # Build options
 
 option(DWMSTATUS_WITH_X11 "Build X11 display module." ON)
 option(DWMSTATUS_WITH_UTIME "Build localized time module." ON)
-
-#------------------------------------------------------------------------------
-# Compiler-specific
-
-if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-gnu-keywords")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pipe")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-endif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
 
 #------------------------------------------------------------------------------
 # Targets
