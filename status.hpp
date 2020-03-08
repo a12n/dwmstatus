@@ -21,15 +21,15 @@ class status
 {
 public:
     explicit
-    status(const seconds& dt, basic_status* raw);
+    status(const seconds& interval, basic_status* impl);
 
     optional<string>
     update(const system_clock::time_point& t);
 
 private:
-    const seconds dt;
+    const seconds interval;
     system_clock::time_point last_t;
-    unique_ptr<basic_status> raw;
+    unique_ptr<basic_status> impl;
 };
 
 } // namespace dwmstatus
