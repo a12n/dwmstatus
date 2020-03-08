@@ -22,9 +22,9 @@ count_files(const fs::path& dir)
 fs::path
 default_dir()
 {
-    const char* home = getenv("HOME");
+    const char* home{getenv("HOME")};
     if (home) {
-        const char* email = getenv("EMAIL");
+        const char* email{getenv("EMAIL")};
         if (email) {
             return fs::path(home) / "mail" / email / "INBOX";
         } else {
