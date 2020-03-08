@@ -8,6 +8,9 @@ namespace dwmstatus {
 class display
 {
 public:
+    virtual
+    ~display() = default;
+
     virtual void
     set_status(const string&) = 0;
 };
