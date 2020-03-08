@@ -7,10 +7,10 @@ namespace fs = std::filesystem;
 namespace dwmstatus {
 namespace {
 
-size_t
+unsigned int
 count_files(const fs::path& dir)
 {
-    size_t ans = 0;
+    unsigned int ans{0};
     for (const auto& f : fs::directory_iterator(dir)) {
         if (f.status().type() == fs::file_type::regular) {
             ++ans;
@@ -65,7 +65,7 @@ maildir_status::maildir_status(istream& config) :
 string
 maildir_status::update(const system_clock::time_point&)
 {
-    size_t n_new = 0;
+    unsigned int n_new{0};
     for (const auto& p : dirs) {
         n_new += count_files(fs::path(p) / "new");
     }
