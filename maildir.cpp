@@ -49,16 +49,16 @@ count_files(const string& path)
     return ans;
 }
 
-fs::path
+string
 default_dir()
 {
     const char* home{getenv("HOME")};
     if (home) {
         const char* email{getenv("EMAIL")};
         if (email) {
-            return fs::path(home) / "mail" / email / "INBOX";
+            return string(home) + "/mail/" + email + "/INBOX";
         } else {
-            return fs::path(home) / "Maildir";
+            return string(home) + "/Maildir";
         }
     } else {
         throw runtime_error("couldn't get default maildir path");
