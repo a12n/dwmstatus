@@ -22,7 +22,7 @@ read_pattern(istream& config)
 utime_status::utime_status(const string& pattern)
 {
     UErrorCode err{U_ZERO_ERROR};
-    fmt.reset(new icu::SimpleDateFormat(icu::UnicodeString::fromUTF8(pattern), err));
+    fmt = make_unique<icu::SimpleDateFormat>(icu::UnicodeString::fromUTF8(pattern), err);
     if (U_FAILURE(err)) {
         throw runtime_error(u_errorName(err));
     }
