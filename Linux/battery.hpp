@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_LINUX_BATTERY_HPP
+#define DWMSTATUS_LINUX_BATTERY_HPP
 
 #include "pfile.hpp"
 #include "status.hpp"
@@ -25,3 +26,5 @@ private:
 };
 
 } // namespace dwmstatus
+
+#endif  // DWMSTATUS_LINUX_BATTERY_HPP

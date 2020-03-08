@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_UTIME_HPP
+#define DWMSTATUS_UTIME_HPP
 
 #include <unicode/smpdtfmt.h>
 
@@ -25,3 +26,5 @@ private:
 };
 
 } // namespace dwmstatus
+
+#endif  // DWMSTATUS_UTIME_HPP

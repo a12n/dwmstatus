@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_DISPLAY_HPP
+#define DWMSTATUS_DISPLAY_HPP
 
 #include "decl.hpp"
 
@@ -43,3 +44,5 @@ private:
 } // namespace dwmstatus
 
 #endif  // DWMSTATUS_WITH_X11
+
+#endif  // DWMSTATUS_DISPLAY_HPP

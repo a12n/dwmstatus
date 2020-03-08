@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_MAILDIR_HPP
+#define DWMSTATUS_MAILDIR_HPP
 
 #include "status.hpp"
 
@@ -21,3 +22,5 @@ private:
 };
 
 } // namespace dwmstatus
+
+#endif  // DWMSTATUS_MAILDIR_HPP

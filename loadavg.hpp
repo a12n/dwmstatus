@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_LOADAVG_HPP
+#define DWMSTATUS_LOADAVG_HPP
 
 #include "status.hpp"
 
@@ -12,3 +13,5 @@ public:
 };
 
 } // namespace dwmstatus
+
+#endif  // DWMSTATUS_LOADAVG_HPP

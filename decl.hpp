@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_DECL_HPP
+#define DWMSTATUS_DECL_HPP
 
 #include <chrono>
 #include <experimental/optional>
@@ -31,3 +32,5 @@ using std::unique_ptr;
 using std::vector;
 
 } // namespace dwmstatus
+
+#endif  // DWMSTATUS_DECL_HPP

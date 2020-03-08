@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_PFILE_HPP
+#define DWMSTATUS_PFILE_HPP
 
 #include "decl.hpp"
 
@@ -40,3 +41,5 @@ private:
 };
 
 } // namespace dwmstatus
+
+#endif  // DWMSTATUS_PFILE_HPP

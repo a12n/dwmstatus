@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DWMSTATUS_LINUX_CPUTEMP_HPP
+#define DWMSTATUS_LINUX_CPUTEMP_HPP
 
 #include "pfile.hpp"
 #include "status.hpp"
@@ -23,3 +24,5 @@ private:
 };
 
 } // namespace dwmstatus
+
+#endif  // DWMSTATUS_LINUX_CPUTEMP_HPP
