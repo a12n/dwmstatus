@@ -2,10 +2,10 @@
 #define DWMSTATUS_DECL_HPP
 
 #include <chrono>
-#include <experimental/optional>
 #include <fstream>
 #include <iomanip>
 #include <memory>
+#include <optional>
 #include <set>
 #include <sstream>
 #include <stdexcept>
@@ -16,12 +16,12 @@ namespace dwmstatus {
 
 using std::chrono::seconds;
 using std::chrono::system_clock;
-using std::experimental::nullopt;
-using std::experimental::optional;
 using std::ifstream;
 using std::istream;
 using std::istringstream;
 using std::make_unique;
+using std::nullopt;
+using std::optional;
 using std::ostringstream;
 using std::quoted;
 using std::runtime_error;
