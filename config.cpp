@@ -51,7 +51,7 @@ read_config(istream& config)
     string line;
     vector<unique_ptr<status>> ans;
     while (getline(config, line)) {
-        istringstream line_config(line);
+        istringstream line_config{line};
         ans.emplace_back(make_status(line_config));
     }
     return ans;
