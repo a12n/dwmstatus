@@ -9,7 +9,7 @@ using std::ios_base;
 battery_status::battery_status()
 {
     try {
-        for (int i = 0; ; ++i) {
+        for (int i{0}; ; ++i) {
             status.push_back(
                 pfile("/sys/class/power_supply/BAT" + to_string(i) + "/status"));
             capacity.push_back(
@@ -25,9 +25,9 @@ battery_status::update(const system_clock::time_point& t)
 {
     show_disch = ! show_disch;
 
-    int charging = 0;
+    int charging{0};
     for (auto& s : status) {
-        auto c = s.read<string>();
+        auto c{s.read<string>()};
         if (c == "Charging") {
             ++charging;
         } else if (c == "Discharging") {
@@ -40,8 +40,8 @@ battery_status::update(const system_clock::time_point& t)
         return "▲▲▲ %";
     }
 
-    double current = 0.0;
-    double total = 0.0;
+    auto current{0.0};
+    auto total{0.0};
 
     for (auto& c : capacity) {
         current += c.read<double>();
