@@ -84,6 +84,9 @@ maildir_status::maildir_status(const set<string>& dir_set) :
     if (dirs.empty()) {
         dirs.emplace_back(default_dir());
     }
+    for (auto& path : dirs) {
+        path = resolve_path(path);
+    }
     dirs.shrink_to_fit();
 }
 
