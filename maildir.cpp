@@ -37,11 +37,12 @@ resolve_path(const string& path)
 }
 
 unsigned int
-count_files(const fs::path& dir)
+count_files(const string& path)
 {
     unsigned int ans{0};
-    for (const auto& f : fs::directory_iterator(dir)) {
-        if (f.status().type() == fs::file_type::regular) {
+    auto dir{open_dir(path)};
+    while (const auto f{readdir(dir.get())}) {
+        if (f->d_type == DT_REG) {
             ++ans;
         }
     }
@@ -96,7 +97,7 @@ maildir_status::update(system_clock::time_point)
 {
     unsigned int n_new{0};
     for (const auto& p : dirs) {
-        n_new += count_files(fs::path(p) / "new");
+        n_new += count_files(p + "/new");
     }
     return to_string(n_new);
 }
