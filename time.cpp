@@ -23,7 +23,7 @@ time_status::time_status(istream& config)
 string
 time_status::update(const system_clock::time_point& t)
 {
-    const auto t2 = system_clock::to_time_t(t);
+    const auto t2{system_clock::to_time_t(t)};
     ostringstream out;
     out << put_time(localtime(&t2), pattern.c_str());
     return out.str();
