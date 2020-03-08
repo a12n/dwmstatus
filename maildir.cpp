@@ -36,7 +36,7 @@ default_dir()
 }
 
 set<string>
-read_dir_set(istream& config)
+read_string_set(istream& config)
 {
     set<string> ans;
     string dir;
@@ -58,7 +58,7 @@ maildir_status::maildir_status(const set<string>& dir_set) :
 }
 
 maildir_status::maildir_status(istream& config) :
-    maildir_status(read_dir_set(config))
+    maildir_status(read_string_set(config))
 {
 }
 
