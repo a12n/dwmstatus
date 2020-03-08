@@ -8,7 +8,7 @@ cputemp_status::cputemp_status() :
 }
 
 string
-cputemp_status::update(const system_clock::time_point& t)
+cputemp_status::update(system_clock::time_point)
 {
     return to_string(static_cast<int>(hwmon.read<double>() / 1000.0)) + " °C";
 }

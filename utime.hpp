@@ -19,7 +19,7 @@ public:
     utime_status(istream& config);
 
     virtual string
-    update(const system_clock::time_point& t) override;
+    update(system_clock::time_point t) override;
 
 private:
     unique_ptr<icu::SimpleDateFormat> fmt;

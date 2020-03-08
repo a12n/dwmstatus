@@ -17,7 +17,7 @@ public:
     operator=(const battery_status&) = delete;
 
     virtual string
-    update(const system_clock::time_point& t) override;
+    update(system_clock::time_point t) override;
 
 private:
     vector<pfile> status;

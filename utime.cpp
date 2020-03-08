@@ -34,7 +34,7 @@ utime_status::utime_status(istream& config) :
 }
 
 string
-utime_status::update(const system_clock::time_point& t)
+utime_status::update(system_clock::time_point t)
 {
     icu::UnicodeString ustr;
     string str;

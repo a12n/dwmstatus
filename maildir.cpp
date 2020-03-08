@@ -63,7 +63,7 @@ maildir_status::maildir_status(istream& config) :
 }
 
 string
-maildir_status::update(const system_clock::time_point&)
+maildir_status::update(system_clock::time_point)
 {
     unsigned int n_new{0};
     for (const auto& p : dirs) {

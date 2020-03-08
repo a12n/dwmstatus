@@ -19,7 +19,7 @@ battery_status::battery_status()
 }
 
 string
-battery_status::update(const system_clock::time_point& t)
+battery_status::update(system_clock::time_point)
 {
     show_disch = ! show_disch;
 

@@ -15,7 +15,7 @@ public:
     maildir_status(istream& config);
 
     virtual string
-    update(const system_clock::time_point& t);
+    update(system_clock::time_point t);
 
 private:
     vector<string> dirs;
