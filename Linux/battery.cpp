@@ -10,10 +10,8 @@ battery_status::battery_status()
 {
     try {
         for (int i{0}; ; ++i) {
-            status.push_back(
-                pfile("/sys/class/power_supply/BAT" + to_string(i) + "/status"));
-            capacity.push_back(
-                pfile("/sys/class/power_supply/BAT" + to_string(i) + "/capacity"));
+            status.emplace_back("/sys/class/power_supply/BAT" + to_string(i) + "/status");
+            capacity.emplace_back("/sys/class/power_supply/BAT" + to_string(i) + "/capacity");
         }
     } catch (const ios_base::failure&) {
         // No more batteries
