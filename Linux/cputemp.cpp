@@ -3,7 +3,7 @@
 namespace dwmstatus {
 
 cputemp_status::cputemp_status() :
-    hwmon("/sys/class/hwmon/hwmon0/temp1_input")
+    hwmon{"/sys/class/hwmon/hwmon0/temp1_input"}
 {
 }
 
