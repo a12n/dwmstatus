@@ -51,8 +51,6 @@ if(DWMSTATUS_WITH_UTIME)
   list(APPEND DWMSTATUS_SRCS utime.cpp)
 endif(DWMSTATUS_WITH_UTIME)
 
-list(APPEND DWMSTATUS_LIBS stdc++fs)
-
 add_executable(dwmstatus ${DWMSTATUS_SRCS})
 target_link_libraries(dwmstatus ${DWMSTATUS_LIBS})
 

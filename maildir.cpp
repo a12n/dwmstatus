@@ -1,5 +1,3 @@
-#include <filesystem>
-
 #include <sys/types.h>
 
 #include <dirent.h>
@@ -8,8 +6,6 @@
 #include <cstdlib>
 
 #include "maildir.hpp"
-
-namespace fs = std::filesystem;
 
 namespace dwmstatus {
 namespace {
