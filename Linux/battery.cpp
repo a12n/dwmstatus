@@ -6,10 +6,7 @@ namespace dwmstatus {
 
 using std::ios_base;
 
-battery_status::battery_status() :
-    status(),
-    capacity(),
-    show_disch(false)
+battery_status::battery_status()
 {
     try {
         for (int i = 0; ; ++i) {

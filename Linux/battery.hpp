@@ -22,7 +22,7 @@ public:
 private:
     vector<pfile> status;
     vector<pfile> capacity;
-    bool show_disch;
+    bool show_disch{false};
 };
 
 } // namespace dwmstatus
