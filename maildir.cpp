@@ -5,9 +5,6 @@
 namespace fs = std::filesystem;
 
 namespace dwmstatus {
-
-using std::getenv;
-
 namespace {
 
 size_t
