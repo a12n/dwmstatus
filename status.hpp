@@ -21,10 +21,10 @@ class status
 {
 public:
     explicit
-    status(const seconds& interval, basic_status* impl);
+    status(seconds interval, basic_status* impl);
 
     optional<string>
-    update(const system_clock::time_point& t);
+    update(system_clock::time_point t);
 
 private:
     const seconds interval;
