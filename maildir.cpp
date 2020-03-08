@@ -1,7 +1,11 @@
 #include <filesystem>
-#include <cstdlib>
 
+#include <sys/types.h>
+
+#include <dirent.h>
 #include <limits.h>
+
+#include <cstdlib>
 
 #include "maildir.hpp"
 
@@ -9,6 +13,18 @@ namespace fs = std::filesystem;
 
 namespace dwmstatus {
 namespace {
+
+using dir_ptr = unique_ptr<DIR, decltype(&closedir)>;
+
+dir_ptr
+open_dir(const string& path)
+{
+    dir_ptr ans{opendir(path.c_str()), closedir};
+    if (! ans) {
+        throw runtime_error("couldn't open directory \"" + path + "\"");
+    }
+    return ans;
+}
 
 string
 resolve_path(const string& path)
