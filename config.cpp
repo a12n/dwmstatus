@@ -29,17 +29,18 @@ unique_ptr<status>
 make_status(istream& config)
 {
     string id;
-    size_t dt;
 
     if (! (config >> quoted(id))) {
         throw runtime_error("a line in config must start with status identifier");
     }
 
-    if (! (config >> dt)) {
+    unsigned int interval;
+
+    if (! (config >> interval)) {
         throw runtime_error("update interval required in config");
     }
 
-    return make_unique<status>(seconds(dt), make_basic_status(id, config));
+    return make_unique<status>(seconds(interval), make_basic_status(id, config));
 }
 
 } // namespace
