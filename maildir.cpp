@@ -41,7 +41,7 @@ read_dir_set(istream& config)
     set<string> ans;
     string dir;
     while (config >> quoted(dir)) {
-        ans.insert(dir);
+        ans.emplace(dir);
     }
     return ans;
 }
@@ -52,7 +52,7 @@ maildir_status::maildir_status(const set<string>& dir_set) :
     dirs(cbegin(dir_set), cend(dir_set))
 {
     if (dirs.empty()) {
-        dirs.push_back(default_dir());
+        dirs.emplace_back(default_dir());
     }
     dirs.shrink_to_fit();
 }
