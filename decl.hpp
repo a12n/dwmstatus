@@ -18,6 +18,7 @@ using std::cbegin;
 using std::cend;
 using std::chrono::seconds;
 using std::chrono::system_clock;
+using std::getline;
 using std::ifstream;
 using std::istream;
 using std::istringstream;

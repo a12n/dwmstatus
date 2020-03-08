@@ -9,9 +9,6 @@
 #endif  // DWMSTATUS_WITH_UTIME
 
 namespace dwmstatus {
-
-using std::getline;
-
 namespace {
 
 unique_ptr<status>
