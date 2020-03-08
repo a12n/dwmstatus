@@ -11,16 +11,16 @@
 namespace dwmstatus {
 namespace {
 
-basic_status*
+unique_ptr<basic_status>
 make_basic_status(const string& id, istream& config)
 {
-    if (id == "battery") { return new battery_status; }
-    else if (id == "cputemp") { return new cputemp_status; }
-    else if (id == "loadavg") { return new loadavg_status; }
-    else if (id == "maildir") { return new maildir_status(config); }
-    else if (id == "time") { return new time_status(config); }
+    if (id == "battery") { return make_unique<battery_status>(); }
+    else if (id == "cputemp") { return make_unique<cputemp_status>(); }
+    else if (id == "loadavg") { return make_unique<loadavg_status>(); }
+    else if (id == "maildir") { return make_unique<maildir_status>(config); }
+    else if (id == "time") { return make_unique<time_status>(config); }
 #ifdef DWMSTATUS_WITH_UTIME
-    else if (id == "utime") { return new utime_status(config); }
+    else if (id == "utime") { return make_unique<utime_status>(config); }
 #endif  // DWMSTATUS_WITH_UTIME
     else { throw runtime_error("unknown status identifier"); }
 }
