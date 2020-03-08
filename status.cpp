@@ -2,9 +2,9 @@
 
 namespace dwmstatus {
 
-status::status(seconds s, basic_status* raw) :
+status::status(seconds s, unique_ptr<basic_status> p) :
     interval{s},
-    impl{raw},
+    impl{move(p)},
     last_t{system_clock::from_time_t(0)}
 {
     if (! impl) {

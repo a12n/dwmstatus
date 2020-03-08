@@ -21,7 +21,7 @@ class status
 {
 public:
     explicit
-    status(seconds interval, basic_status* impl);
+    status(seconds interval, unique_ptr<basic_status> impl);
 
     optional<string>
     update(system_clock::time_point t);
