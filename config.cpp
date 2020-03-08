@@ -11,6 +11,20 @@
 namespace dwmstatus {
 namespace {
 
+basic_status*
+make_basic_status(const string& id, istream& config)
+{
+    if (id == "battery") { return new battery_status; }
+    else if (id == "cputemp") { return new cputemp_status; }
+    else if (id == "loadavg") { return new loadavg_status; }
+    else if (id == "maildir") { return new maildir_status(config); }
+    else if (id == "time") { return new time_status(config); }
+#ifdef DWMSTATUS_WITH_UTIME
+    else if (id == "utime") { return new utime_status(config); }
+#endif  // DWMSTATUS_WITH_UTIME
+    else { throw runtime_error("unknown status identifier"); }
+}
+
 unique_ptr<status>
 read_status(istream& config)
 {
@@ -25,19 +39,7 @@ read_status(istream& config)
         throw runtime_error("update interval required in config");
     }
 
-    basic_status* raw_status = nullptr;
-
-    if (id == "battery") { raw_status = new battery_status; }
-    else if (id == "cputemp") { raw_status = new cputemp_status; }
-    else if (id == "loadavg") { raw_status = new loadavg_status; }
-    else if (id == "maildir") { raw_status = new maildir_status(config); }
-    else if (id == "time") { raw_status = new time_status(config); }
-#ifdef DWMSTATUS_WITH_UTIME
-    else if (id == "utime") { raw_status = new utime_status(config); }
-#endif  // DWMSTATUS_WITH_UTIME
-    else { throw runtime_error("unknown status identifier"); }
-
-    return make_unique<status>(seconds(dt), raw_status);
+    return make_unique<status>(seconds(dt), make_basic_status(id, config));
 }
 
 } // namespace
