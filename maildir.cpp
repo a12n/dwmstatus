@@ -1,4 +1,7 @@
 #include <filesystem>
+#include <cstdlib>
+
+#include <limits.h>
 
 #include "maildir.hpp"
 
@@ -6,6 +9,16 @@ namespace fs = std::filesystem;
 
 namespace dwmstatus {
 namespace {
+
+string
+resolve_path(const string& path)
+{
+    char ans[PATH_MAX];
+    if (! realpath(path.c_str(), ans)) {
+        throw runtime_error("couldn't resolve path \"" + path + "\"");
+    }
+    return ans;
+}
 
 unsigned int
 count_files(const fs::path& dir)
