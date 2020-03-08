@@ -1,8 +1,8 @@
-#include <experimental/filesystem>
+#include <filesystem>
 
 #include "maildir.hpp"
 
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 
 namespace dwmstatus {
 
