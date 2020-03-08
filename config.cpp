@@ -45,11 +45,11 @@ read_status(istream& config)
 
 } // namespace
 
-vector<unique_ptr<status> >
+vector<unique_ptr<status>>
 read_config(istream& config)
 {
     string line;
-    vector<unique_ptr<status> > ans;
+    vector<unique_ptr<status>> ans;
     while (getline(config, line)) {
         istringstream line_config(line);
         ans.push_back(read_status(line_config));
