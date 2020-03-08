@@ -34,14 +34,14 @@ main(void)
     term_display display;
 #endif  // DWMSTATUS_WITH_X11
 
-    auto status = read_config(cin);
+    auto status{read_config(cin)};
     vector<string> status_str(status.size());
 
     while (true) {
-        const auto t = system_clock::now();
-        bool changed = false;
-        for (size_t i = 0; i < status.size(); ++i) {
-            const auto s = status[i]->update(t);
+        const auto t{system_clock::now()};
+        bool changed{false};
+        for (size_t i{0}; i < status.size(); ++i) {
+            const auto s{status[i]->update(t)};
             if (s) {
                 status_str[i] = *s;
                 changed = true;
