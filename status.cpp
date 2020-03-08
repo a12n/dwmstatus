@@ -3,9 +3,9 @@
 namespace dwmstatus {
 
 status::status(const seconds& dt, basic_status* raw) :
-    interval(s),
-    last_t(system_clock::from_time_t(0)),
-    impl(raw)
+    interval{s},
+    last_t{system_clock::from_time_t(0)},
+    impl{raw}
 {
     if (! impl) {
         throw runtime_error("basic status must be non-null");
