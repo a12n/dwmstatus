@@ -28,8 +28,8 @@ public:
 
 private:
     const seconds interval;
+    const unique_ptr<basic_status> impl;
     system_clock::time_point last_t;
-    unique_ptr<basic_status> impl;
 };
 
 } // namespace dwmstatus
