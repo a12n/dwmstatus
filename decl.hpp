@@ -14,12 +14,15 @@
 
 namespace dwmstatus {
 
+using std::cbegin;
+using std::cend;
 using std::chrono::seconds;
 using std::chrono::system_clock;
 using std::ifstream;
 using std::istream;
 using std::istringstream;
 using std::make_unique;
+using std::move;
 using std::nullopt;
 using std::optional;
 using std::ostringstream;
