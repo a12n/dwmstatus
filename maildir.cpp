@@ -49,7 +49,7 @@ read_dir_set(istream& config)
 } // namespace
 
 maildir_status::maildir_status(const set<string>& dir_set) :
-    dirs(dir_set.begin(), dir_set.end())
+    dirs(cbegin(dir_set), cend(dir_set))
 {
     if (dirs.empty()) {
         dirs.push_back(default_dir());
