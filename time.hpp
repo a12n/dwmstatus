@@ -20,7 +20,7 @@ public:
     update(system_clock::time_point t) override;
 
 private:
-    string pattern;
+    const string pattern;
 };
 
 } // namespace dwmstatus
