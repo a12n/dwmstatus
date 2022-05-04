@@ -15,7 +15,7 @@ unique_ptr<basic_status>
 make_basic_status(const string& id, istream& config)
 {
     if (id == "battery") { return make_unique<battery_status>(); }
-    else if (id == "cputemp") { return make_unique<cputemp_status>(); }
+    else if (id == "cputemp") { return make_unique<cputemp_status>(config); }
     else if (id == "loadavg") { return make_unique<loadavg_status>(); }
     else if (id == "maildir") { return make_unique<maildir_status>(config); }
     else if (id == "time") { return make_unique<time_status>(config); }
