@@ -2,22 +2,10 @@
 
 #include <unicode/unistr.h>
 
+#include "config.hpp"
 #include "utime.hpp"
 
 namespace dwmstatus {
-namespace {
-
-string
-read_pattern(istream& config)
-{
-    string ans;
-    if (! (config >> quoted(ans))) {
-        ans = utime_status::default_pattern;
-    }
-    return ans;
-}
-
-} // namespace
 
 utime_status::utime_status(const string& pattern)
 {
@@ -29,7 +17,7 @@ utime_status::utime_status(const string& pattern)
 }
 
 utime_status::utime_status(istream& config) :
-    utime_status(read_pattern(config))
+    utime_status(read_value<string>(config).value_or(default_pattern))
 {
 }
 
