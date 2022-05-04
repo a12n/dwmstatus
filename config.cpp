@@ -57,4 +57,16 @@ read_config(istream& config)
     return ans;
 }
 
+template <>
+optional<string>
+read_value(istream& config)
+{
+    string ans;
+    if (config >> quoted(ans)) {
+        return ans;
+    } else {
+        return nullopt;
+    }
+}
+
 } // namespace dwmstatus
