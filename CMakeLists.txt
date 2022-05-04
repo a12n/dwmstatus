@@ -15,6 +15,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 option(DWMSTATUS_WITH_X11 "Build X11 display module." ON)
 option(DWMSTATUS_WITH_UTIME "Build localized time module." ON)
+option(DWMSTATUS_WITH_COLOR "Build with ANSI colors in output." ON)
 
 #------------------------------------------------------------------------------
 # Targets
@@ -50,6 +51,10 @@ if(DWMSTATUS_WITH_UTIME)
   list(APPEND DWMSTATUS_LIBS ${ICU_LIBRARIES})
   list(APPEND DWMSTATUS_SRCS utime.cpp)
 endif(DWMSTATUS_WITH_UTIME)
+
+if(DWMSTATUS_WITH_COLOR)
+  add_definitions(-DDWMSTATUS_WITH_COLOR)
+endif(DWMSTATUS_WITH_COLOR)
 
 add_executable(dwmstatus ${DWMSTATUS_SRCS})
 target_link_libraries(dwmstatus ${DWMSTATUS_LIBS})
