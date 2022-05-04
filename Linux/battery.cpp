@@ -39,10 +39,12 @@ battery_status::update(system_clock::time_point)
         total += 100.0;
     }
 
+    const auto pct{current / total};
+
     ostringstream out;
 
     out.width(3);
-    out << static_cast<int>(round(100.0 * current / total)) << ' ';
+    out << static_cast<int>(round(100.0 * pct)) << ' ';
     if (charging < 0) {
         out << "▼";
     } else if (charging > 0) {
