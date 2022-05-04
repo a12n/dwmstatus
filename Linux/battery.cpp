@@ -23,7 +23,7 @@ battery_status::update(system_clock::time_point)
 {
     int charging{0};
     for (auto& s : status) {
-        auto c{s.read<string>()};
+        auto c{s.rewind().read_value<string>().value_or("")};
         if (c == "Charging") {
             ++charging;
         } else if (c == "Discharging") {
@@ -35,7 +35,7 @@ battery_status::update(system_clock::time_point)
     auto total{0.0};
 
     for (auto& c : capacity) {
-        current += c.read<double>();
+        current += c.rewind().read_value<double>().value_or(0.0);
         total += 100.0;
     }
 

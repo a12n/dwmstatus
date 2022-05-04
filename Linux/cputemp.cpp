@@ -16,7 +16,7 @@ cputemp_status::cputemp_status(istream& config) :
 string
 cputemp_status::update(system_clock::time_point)
 {
-    return to_string(static_cast<int>(hwmon.read<double>() / 1000.0)) + " °C";
+    return to_string(static_cast<int>(hwmon.rewind().read_value<double>().value_or(0.0) / 1000.0)) + " °C";
 }
 
 } // namespace dwmstatus

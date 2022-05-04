@@ -27,16 +27,6 @@ public:
     pfile&
     operator=(pfile&&) = default;
 
-    template <class T>
-    T
-    read()
-    {
-        f.seekg(0);
-        T ans;
-        f >> ans;
-        return ans;
-    }
-
     template <typename T>
     optional<T>
     read_value()
