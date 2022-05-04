@@ -9,7 +9,8 @@ namespace dwmstatus {
 class cputemp_status : public basic_status
 {
 public:
-    cputemp_status();
+    explicit
+    cputemp_status(unsigned int i = 0);
 
     cputemp_status(const cputemp_status&) = delete;
 
