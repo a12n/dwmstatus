@@ -1,6 +1,7 @@
 #ifndef DWMSTATUS_PFILE_HPP
 #define DWMSTATUS_PFILE_HPP
 
+#include "config.hpp"
 #include "decl.hpp"
 
 namespace dwmstatus {
@@ -34,6 +35,20 @@ public:
         T ans;
         f >> ans;
         return ans;
+    }
+
+    template <typename T>
+    optional<T>
+    read_value()
+    {
+        return dwmstatus::read_value<T>(f);
+    }
+
+    pfile&
+    rewind()
+    {
+        f.seekg(0);
+        return *this;
     }
 
 private:
