@@ -12,6 +12,9 @@ public:
     explicit
     cputemp_status(unsigned int i = 0);
 
+    explicit
+    cputemp_status(istream& config);
+
     cputemp_status(const cputemp_status&) = delete;
 
     cputemp_status&

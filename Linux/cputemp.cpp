@@ -1,9 +1,15 @@
+#include "config.hpp"
 #include "cputemp.hpp"
 
 namespace dwmstatus {
 
 cputemp_status::cputemp_status(unsigned int i) :
     hwmon{"/sys/class/hwmon/hwmon" + to_string(i) + "/temp1_input"}
+{
+}
+
+cputemp_status::cputemp_status(istream& config) :
+    cputemp_status(read_value<unsigned int>(config).value_or(0))
 {
 }
 
