@@ -43,6 +43,12 @@ battery_status::update(system_clock::time_point)
 
     ostringstream out;
 
+#ifdef DWMSTATUS_WITH_COLOR
+    if (pct < 0.15) {
+        out << "\033[41m";
+    }
+#endif  // DWMSTATUS_WITH_COLOR
+
     out.width(3);
     out << static_cast<int>(round(100.0 * pct)) << ' ';
     if (charging < 0) {
@@ -52,6 +58,10 @@ battery_status::update(system_clock::time_point)
     } else {
         out << '%';
     }
+
+#ifdef DWMSTATUS_WITH_COLOR
+    out << "\033[0m";
+#endif  // DWMSTATUS_WITH_COLOR
 
     return out.str();
 }
