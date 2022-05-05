@@ -13,8 +13,10 @@ public:
     pfile(const string& filename)
     {
         f.rdbuf()->pubsetbuf(nullptr, 0);
-        f.exceptions(ifstream::failbit);
         f.open(filename);
+        if (f.fail()) {
+            throw std::ios_base::failure("couldn't open file");
+        }
     }
 
     pfile(const pfile&) = delete;
@@ -37,6 +39,7 @@ public:
     pfile&
     rewind()
     {
+        f.clear();
         f.seekg(0);
         return *this;
     }
