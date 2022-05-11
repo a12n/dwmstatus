@@ -20,8 +20,18 @@ public:
     update(system_clock::time_point t) override;
 
 private:
-    vector<pfile> status;
-    vector<pfile> capacity;
+    struct battery {
+        explicit
+        battery(const string& dir_path);
+
+        short
+        charging();
+
+        pfile status;
+        pfile capacity;
+    };
+
+    vector<battery> batteries;
 };
 
 } // namespace dwmstatus

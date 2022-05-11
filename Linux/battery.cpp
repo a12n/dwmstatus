@@ -6,12 +6,30 @@ namespace dwmstatus {
 
 using std::ios_base;
 
+battery_status::battery::battery(const string& dir_path) :
+    status{dir_path + "/status"},
+    capacity{dir_path + "/capacity"}
+{
+}
+
+short
+battery_status::battery::charging()
+{
+    const auto s{status.reread_value<string>().value_or("")};
+    if (s == "Discharging") {
+        return -1;
+    } else if (s == "Charging") {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 battery_status::battery_status()
 {
     try {
         for (int i{0}; ; ++i) {
-            status.emplace_back("/sys/class/power_supply/BAT" + to_string(i) + "/status");
-            capacity.emplace_back("/sys/class/power_supply/BAT" + to_string(i) + "/capacity");
+            batteries.emplace_back("/sys/class/power_supply/BAT" + to_string(i));
         }
     } catch (const ios_base::failure&) {
         // No more batteries
@@ -21,21 +39,13 @@ battery_status::battery_status()
 string
 battery_status::update(system_clock::time_point)
 {
-    int charging{0};
-    for (auto& s : status) {
-        auto c{s.rewind().read_value<string>().value_or("")};
-        if (c == "Charging") {
-            ++charging;
-        } else if (c == "Discharging") {
-            --charging;
-        }
-    }
-
+    auto charging{0};
     auto current{0.0};
     auto total{0.0};
 
-    for (auto& c : capacity) {
-        current += c.rewind().read_value<double>().value_or(0.0);
+    for (auto& b : batteries) {
+        charging += b.charging();
+        current += b.capacity.reread_value<double>().value_or(0.0);
         total += 100.0;
     }
 
