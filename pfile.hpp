@@ -36,6 +36,14 @@ public:
         return dwmstatus::read_value<T>(f);
     }
 
+    template <typename T>
+    optional<T>
+    reread_value()
+    {
+        rewind();
+        return read_value<T>();
+    }
+
     pfile&
     rewind()
     {
