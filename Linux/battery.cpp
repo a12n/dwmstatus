@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "battery.hpp"
+#include "blocks.hpp"
 
 namespace dwmstatus {
 
@@ -53,19 +54,15 @@ battery_status::update(system_clock::time_point)
 
 #ifdef DWMSTATUS_WITH_COLOR
     if (pct < 0.15) {
-        out << "\033[41m";
+        out << "\033[31m";
+    } else if (charging > 0) {
+        out << "\033[32m";
+    } else if (charging < 0) {
+        out << "\033[33m";
     }
 #endif  // DWMSTATUS_WITH_COLOR
 
-    out.width(3);
-    out << static_cast<int>(round(100.0 * pct)) << ' ';
-    if (charging < 0) {
-        out << "▼";
-    } else if (charging > 0) {
-        out << "▲";
-    } else {
-        out << '%';
-    }
+    out << choose_block({ "", "", "", "", "" }, pct);
 
 #ifdef DWMSTATUS_WITH_COLOR
     out << "\033[0m";
