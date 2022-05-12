@@ -40,16 +40,14 @@ string
 battery_status::update(system_clock::time_point)
 {
     auto charging{0};
-    auto current{0.0};
-    auto total{0.0};
+    auto capacity{0.0};
 
     for (auto& b : batteries) {
         charging += b.charging();
-        current += b.capacity.reread_value<double>().value_or(0.0);
-        total += 100.0;
+        capacity += b.capacity.reread_value<double>().value_or(0.0);
     }
 
-    const auto pct{current / total};
+    const auto pct{capacity / (100.0 * batteries.size())};
 
     ostringstream out;
 
