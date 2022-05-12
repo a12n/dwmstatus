@@ -28,6 +28,7 @@ include_directories(
 set(DWMSTATUS_SRCS
   ${CMAKE_SYSTEM_NAME}/battery.cpp
   ${CMAKE_SYSTEM_NAME}/cputemp.cpp
+  blocks.cpp
   config.cpp
   display.cpp
   loadavg.cpp
