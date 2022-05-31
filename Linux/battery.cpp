@@ -62,7 +62,8 @@ battery_status::update(system_clock::time_point)
     }
 #endif  // DWMSTATUS_WITH_COLOR
 
-    out << choose_block({ "", "", "", "", "" }, pct);
+    out.width(3);
+    out << static_cast<int>(round(100.0 * pct)) << " %";
 
 #ifdef DWMSTATUS_WITH_COLOR
     out << "\033[0m";
