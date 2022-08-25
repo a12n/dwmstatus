@@ -5,23 +5,18 @@
 
 namespace dwmstatus {
 
-class display
-{
+class display {
 public:
-    virtual
-    ~display() = default;
+    virtual ~display() = default;
 
-    virtual void
-    set_status(const string&) = 0;
+    virtual void set_status(const string&) = 0;
 };
 
 //----------------------------------------------------------------------------
 
-class term_display : public display
-{
+class term_display : public display {
 public:
-    virtual void
-    set_status(const string& s) override;
+    virtual void set_status(const string& s) override;
 };
 
 } // namespace dwmstatus
@@ -32,13 +27,11 @@ public:
 
 namespace dwmstatus {
 
-class x_display : public display
-{
+class x_display : public display {
 public:
     x_display();
 
-    virtual void
-    set_status(const string& s) override;
+    virtual void set_status(const string& s) override;
 
 private:
     unique_ptr<Display, decltype(&XCloseDisplay)> dpy;
@@ -46,6 +39,6 @@ private:
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_WITH_X11
+#endif // DWMSTATUS_WITH_X11
 
-#endif  // DWMSTATUS_DISPLAY_HPP
+#endif // DWMSTATUS_DISPLAY_HPP
