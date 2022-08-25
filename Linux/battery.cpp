@@ -16,7 +16,7 @@ battery_status::battery::battery(const string& dir_path)
 
 short battery_status::battery::charging()
 {
-    const auto s { status.reread_value<string>().value_or("") };
+    const auto s = status.reread_value<string>().value_or("");
     if (s == "Discharging") {
         return -1;
     } else if (s == "Charging") {
@@ -29,7 +29,7 @@ short battery_status::battery::charging()
 battery_status::battery_status()
 {
     try {
-        for (int i { 0 };; ++i) {
+        for (int i = 0;; ++i) {
             batteries.emplace_back("/sys/class/power_supply/BAT" + to_string(i));
         }
     } catch (const ios_base::failure&) {
@@ -39,15 +39,15 @@ battery_status::battery_status()
 
 string battery_status::update(system_clock::time_point)
 {
-    auto charging { 0 };
-    auto capacity { 0.0 };
+    auto charging = 0;
+    auto capacity = 0.0;
 
     for (auto& b : batteries) {
         charging += b.charging();
         capacity += b.capacity.reread_value<double>().value_or(0.0);
     }
 
-    const auto pct { capacity / (100.0 * batteries.size()) };
+    const auto pct = capacity / (100.0 * batteries.size());
 
     ostringstream out;
 
