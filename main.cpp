@@ -29,7 +29,7 @@ int
 main(void)
 {
 #ifdef DWMSTATUS_WITH_X11
-    x_display display;
+    x11_display display;
 #else  // DWMSTATUS_WITH_X11
     term_display display;
 #endif  // DWMSTATUS_WITH_X11

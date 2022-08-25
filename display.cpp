@@ -13,7 +13,7 @@ void term_display::set_status(const string& s)
 
 //----------------------------------------------------------------------------
 
-x_display::x_display()
+x11_display::x11_display()
     : dpy(XOpenDisplay(nullptr), XCloseDisplay)
 {
     if (!dpy) {
@@ -21,7 +21,7 @@ x_display::x_display()
     }
 }
 
-void x_display::set_status(const string& s)
+void x11_display::set_status(const string& s)
 {
     XStoreName(dpy.get(), DefaultRootWindow(dpy.get()), s.c_str());
     XSync(dpy.get(), False);

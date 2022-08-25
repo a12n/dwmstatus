@@ -27,9 +27,9 @@ public:
 
 namespace dwmstatus {
 
-class x_display : public display {
+class x11_display : public display {
 public:
-    x_display();
+    x11_display();
 
     virtual void set_status(const string& s) override;
 
