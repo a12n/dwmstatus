@@ -7,19 +7,15 @@
 
 namespace dwmstatus {
 
-class utime_status : public status_impl
-{
+class utime_status : public status_impl {
 public:
     static constexpr auto default_pattern = "EEEE, d MMMM yyyy HH:mm:ss";
 
-    explicit
-    utime_status(const string& pattern = default_pattern);
+    explicit utime_status(const string& pattern = default_pattern);
 
-    explicit
-    utime_status(istream& config);
+    explicit utime_status(istream& config);
 
-    virtual string
-    update(system_clock::time_point t) override;
+    virtual string update(system_clock::time_point t) override;
 
 private:
     unique_ptr<icu::SimpleDateFormat> fmt;
@@ -27,4 +23,4 @@ private:
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_UTIME_HPP
+#endif // DWMSTATUS_UTIME_HPP
