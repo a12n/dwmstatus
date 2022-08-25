@@ -5,26 +5,20 @@
 
 namespace dwmstatus {
 
-class basic_status
-{
+class basic_status {
 public:
-    virtual
-    ~basic_status() = default;
+    virtual ~basic_status() = default;
 
-    virtual string
-    update(system_clock::time_point t) = 0;
+    virtual string update(system_clock::time_point t) = 0;
 };
 
 //----------------------------------------------------------------------------
 
-class status
-{
+class status {
 public:
-    explicit
-    status(seconds interval, unique_ptr<basic_status> impl);
+    explicit status(seconds interval, unique_ptr<basic_status> impl);
 
-    optional<string>
-    update(system_clock::time_point t);
+    optional<string> update(system_clock::time_point t);
 
 private:
     const seconds interval;
@@ -34,4 +28,4 @@ private:
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_STATUS_HPP
+#endif // DWMSTATUS_STATUS_HPP
