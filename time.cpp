@@ -14,8 +14,8 @@ time_status::time_status(const string& pattern)
 {
 }
 
-time_status::time_status(istream& config)
-    : time_status(read_value<string>(config).value_or(default_pattern))
+time_status::time_status(istream& conf)
+    : time_status(read_value<string>(conf).value_or(default_pattern))
 {
 }
 
