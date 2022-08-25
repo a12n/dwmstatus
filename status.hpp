@@ -26,6 +26,10 @@ private:
     system_clock::time_point t0;
 };
 
+//----------------------------------------------------------------------------
+
+using status_list = vector<unique_ptr<status>>;
+
 } // namespace dwmstatus
 
 #endif // DWMSTATUS_STATUS_HPP
