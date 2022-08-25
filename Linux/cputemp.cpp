@@ -4,7 +4,7 @@
 
 namespace dwmstatus {
 
-cputemp_status::cputemp_status(unsigned int i)
+cputemp_status::cputemp_status(int i)
     : hwmon { "/sys/class/hwmon/hwmon" + to_string(i) + "/temp1_input" }
 {
 }
