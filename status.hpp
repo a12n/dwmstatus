@@ -26,8 +26,8 @@ public:
     }
 
 private:
-    const seconds period;
-    const unique_ptr<status_impl> impl;
+    seconds period;
+    unique_ptr<status_impl> impl;
     system_clock::time_point t0;
     string str;
 };

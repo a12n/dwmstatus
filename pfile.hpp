@@ -6,11 +6,9 @@
 
 namespace dwmstatus {
 
-class pfile
-{
+class pfile {
 public:
-    explicit
-    pfile(const string& filename)
+    explicit pfile(const string& filename)
     {
         f.rdbuf()->pubsetbuf(nullptr, 0);
         f.open(filename);
@@ -23,29 +21,24 @@ public:
 
     pfile(pfile&&) = default;
 
-    pfile&
-    operator=(const pfile&) = delete;
+    pfile& operator=(const pfile&) = delete;
 
-    pfile&
-    operator=(pfile&&) = default;
+    pfile& operator=(pfile&&) = default;
 
     template <typename T>
-    optional<T>
-    read_value()
+    optional<T> read_value()
     {
         return dwmstatus::read_value<T>(f);
     }
 
     template <typename T>
-    optional<T>
-    reread_value()
+    optional<T> reread_value()
     {
         rewind();
         return read_value<T>();
     }
 
-    pfile&
-    rewind()
+    pfile& rewind()
     {
         f.clear();
         f.seekg(0);
@@ -58,4 +51,4 @@ private:
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_PFILE_HPP
+#endif // DWMSTATUS_PFILE_HPP
