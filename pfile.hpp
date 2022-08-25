@@ -17,14 +17,6 @@ public:
         }
     }
 
-    pfile(const pfile&) = delete;
-
-    pfile(pfile&&) = default;
-
-    pfile& operator=(const pfile&) = delete;
-
-    pfile& operator=(pfile&&) = default;
-
     template <typename T>
     optional<T> read_value()
     {

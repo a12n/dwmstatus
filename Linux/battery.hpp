@@ -10,10 +10,6 @@ class battery_status : public status_impl {
 public:
     battery_status();
 
-    battery_status(const battery_status&) = delete;
-
-    battery_status& operator=(const battery_status&) = delete;
-
     virtual string update(system_clock::time_point t) override;
 
 private:

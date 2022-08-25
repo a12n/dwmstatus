@@ -12,10 +12,6 @@ public:
 
     explicit cputemp_status(istream& config);
 
-    cputemp_status(const cputemp_status&) = delete;
-
-    cputemp_status& operator=(const cputemp_status&) = delete;
-
     virtual string update(system_clock::time_point t) override;
 
 private:
