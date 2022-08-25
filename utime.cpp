@@ -17,8 +17,8 @@ utime_status::utime_status(const string& pattern)
     }
 }
 
-utime_status::utime_status(istream& config)
-    : utime_status(read_value<string>(config).value_or(default_pattern))
+utime_status::utime_status(istream& conf)
+    : utime_status(read_value<string>(conf).value_or(default_pattern))
 {
 }
 

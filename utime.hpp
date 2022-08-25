@@ -13,7 +13,7 @@ public:
 
     explicit utime_status(const string& pattern = default_pattern);
 
-    explicit utime_status(istream& config);
+    explicit utime_status(istream& conf);
 
     virtual string update(system_clock::time_point t) override;
 
