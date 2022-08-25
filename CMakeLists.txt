@@ -1,14 +1,13 @@
-cmake_minimum_required(VERSION 3.0)
-
-include(FindPkgConfig)
+cmake_minimum_required(VERSION 3.14)
 
 #------------------------------------------------------------------------------
 # Project variables
 
-project(dwmstatus)
+project(dwmstatus VERSION 1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_EXTENSIONS off)
+set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #------------------------------------------------------------------------------
 # Build options
@@ -20,12 +19,7 @@ option(DWMSTATUS_WITH_COLOR "Build with ANSI colors in output." ON)
 #------------------------------------------------------------------------------
 # Targets
 
-include_directories(
-  ${PROJECT_SOURCE_DIR}
-  ${PROJECT_SOURCE_DIR}/${CMAKE_SYSTEM_NAME}
-  )
-
-set(DWMSTATUS_SRCS
+add_executable(dwmstatus
   ${CMAKE_SYSTEM_NAME}/battery.cpp
   ${CMAKE_SYSTEM_NAME}/cputemp.cpp
   blocks.cpp
@@ -37,28 +31,28 @@ set(DWMSTATUS_SRCS
   status.cpp
   time.cpp
   )
+target_include_directories(dwmstatus
+  PRIVATE
+  ${PROJECT_SOURCE_DIR}
+  ${PROJECT_SOURCE_DIR}/${CMAKE_SYSTEM_NAME}
+  )
 
 if(DWMSTATUS_WITH_X11)
   find_package(X11 REQUIRED)
-  add_definitions(-DDWMSTATUS_WITH_X11)
-  include_directories(${X11_INCLUDE_DIR})
-  list(APPEND DWMSTATUS_LIBS ${X11_LIBRARIES})
+  target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_X11)
+  target_link_libraries(dwmstatus PRIVATE X11::X11)
 endif(DWMSTATUS_WITH_X11)
 
 if(DWMSTATUS_WITH_UTIME)
-  pkg_check_modules(ICU REQUIRED icu-i18n)
-  add_definitions(-DDWMSTATUS_WITH_UTIME)
-  include_directories(${ICU_INCLUDE_DIRS})
-  list(APPEND DWMSTATUS_LIBS ${ICU_LIBRARIES})
-  list(APPEND DWMSTATUS_SRCS utime.cpp)
+  find_package(ICU REQUIRED COMPONENTS i18n uc)
+  target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_UTIME)
+  target_link_libraries(dwmstatus PRIVATE ICU::i18n ICU::uc)
+  target_sources(dwmstatus PRIVATE utime.cpp)
 endif(DWMSTATUS_WITH_UTIME)
 
 if(DWMSTATUS_WITH_COLOR)
-  add_definitions(-DDWMSTATUS_WITH_COLOR)
+  target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_COLOR)
 endif(DWMSTATUS_WITH_COLOR)
-
-add_executable(dwmstatus ${DWMSTATUS_SRCS})
-target_link_libraries(dwmstatus ${DWMSTATUS_LIBS})
 
 #------------------------------------------------------------------------------
 # Installation
