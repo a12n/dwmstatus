@@ -13,22 +13,22 @@
 namespace dwmstatus {
 namespace {
 
-unique_ptr<status_impl> make_status_impl(const string& id, istream& config)
+unique_ptr<status_impl> make_status_impl(const string& id, istream& conf)
 {
     if (id == "battery") {
         return make_unique<battery_status>();
     } else if (id == "cputemp") {
-        return make_unique<cputemp_status>(config);
+        return make_unique<cputemp_status>(conf);
     } else if (id == "loadavg") {
         return make_unique<loadavg_status>();
     } else if (id == "maildir") {
-        return make_unique<maildir_status>(config);
+        return make_unique<maildir_status>(conf);
     } else if (id == "time") {
-        return make_unique<time_status>(config);
+        return make_unique<time_status>(conf);
     }
 #ifdef DWMSTATUS_WITH_UTIME
     else if (id == "utime") {
-        return make_unique<utime_status>(config);
+        return make_unique<utime_status>(conf);
     }
 #endif // DWMSTATUS_WITH_UTIME
     else {
@@ -36,41 +36,41 @@ unique_ptr<status_impl> make_status_impl(const string& id, istream& config)
     }
 }
 
-unique_ptr<status> make_status(istream& config)
+unique_ptr<status> make_status(istream& conf)
 {
     string id;
 
-    if (!(config >> quoted(id))) {
+    if (!(conf >> quoted(id))) {
         throw runtime_error("a line in config must start with status identifier");
     }
 
-    unsigned int interval;
+    unsigned int period;
 
-    if (!(config >> interval)) {
-        throw runtime_error("update interval required in config");
+    if (!(conf >> period)) {
+        throw runtime_error("update period required in config");
     }
 
-    return make_unique<status>(seconds(interval), make_status_impl(id, config));
+    return make_unique<status>(seconds(period), make_status_impl(id, conf));
 }
 
 } // namespace
 
-vector<unique_ptr<status>> read_config(istream& config)
+vector<unique_ptr<status>> read_config(istream& conf)
 {
     string line;
     vector<unique_ptr<status>> ans;
-    while (getline(config, line)) {
-        istringstream line_config { line };
-        ans.emplace_back(make_status(line_config));
+    while (getline(conf, line)) {
+        istringstream line_conf { line };
+        ans.emplace_back(make_status(line_conf));
     }
     return ans;
 }
 
 template <>
-optional<string> read_value(istream& config)
+optional<string> read_value(istream& conf)
 {
     string ans;
-    if (config >> quoted(ans)) {
+    if (conf >> quoted(ans)) {
         return ans;
     } else {
         return nullopt;

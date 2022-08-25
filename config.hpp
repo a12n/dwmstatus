@@ -5,15 +5,15 @@
 
 namespace dwmstatus {
 
-vector<unique_ptr<status>> read_config(istream& config);
+vector<unique_ptr<status>> read_config(istream& conf);
 
 //----------------------------------------------------------------------------
 
 template <typename T>
-optional<T> read_value(istream& config)
+optional<T> read_value(istream& conf)
 {
     T ans;
-    if (config >> ans) {
+    if (conf >> ans) {
         return ans;
     } else {
         return nullopt;
@@ -21,7 +21,7 @@ optional<T> read_value(istream& config)
 }
 
 template <>
-optional<string> read_value(istream& config);
+optional<string> read_value(istream& conf);
 
 } // namespace dwmstatus
 
