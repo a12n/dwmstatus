@@ -1,7 +1,8 @@
-#include <ctime>
+#include "time.hpp"
 
 #include "config.hpp"
-#include "time.hpp"
+
+#include <ctime>
 
 namespace dwmstatus {
 
