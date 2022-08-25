@@ -1,5 +1,6 @@
-#include "battery.hpp"
 #include "config.hpp"
+
+#include "battery.hpp"
 #include "cputemp.hpp"
 #include "loadavg.hpp"
 #include "maildir.hpp"
