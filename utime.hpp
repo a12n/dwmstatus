@@ -1,9 +1,9 @@
 #ifndef DWMSTATUS_UTIME_HPP
 #define DWMSTATUS_UTIME_HPP
 
-#include <unicode/smpdtfmt.h>
-
 #include "status.hpp"
+
+#include <unicode/smpdtfmt.h>
 
 namespace dwmstatus {
 

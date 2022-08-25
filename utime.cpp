@@ -1,9 +1,10 @@
-#include <stdexcept>
+#include "utime.hpp"
+
+#include "config.hpp"
 
 #include <unicode/unistr.h>
 
-#include "config.hpp"
-#include "utime.hpp"
+#include <stdexcept>
 
 namespace dwmstatus {
 
