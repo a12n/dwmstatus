@@ -8,7 +8,7 @@ using std::ios_base;
 
 string loadavg_status::update(system_clock::time_point)
 {
-    double loadavg[3] { 0.0, 0.0, 0.0 };
+    double loadavg[3] = { 0.0, 0.0, 0.0 };
 
     getloadavg(loadavg, 3);
 
