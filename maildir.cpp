@@ -32,9 +32,9 @@ string resolve_path(const string& path)
 
 unsigned count_files(const string& path)
 {
-    unsigned ans { 0 };
-    auto dir { open_dir(path) };
-    while (const auto f { readdir(dir.get()) }) {
+    unsigned ans = 0;
+    auto dir = open_dir(path);
+    while (const auto f = readdir(dir.get())) {
         if (f->d_type == DT_REG) {
             ++ans;
         }
@@ -44,9 +44,9 @@ unsigned count_files(const string& path)
 
 string default_dir()
 {
-    const char* home { getenv("HOME") };
+    const char* home = getenv("HOME");
     if (home) {
-        const char* email { getenv("EMAIL") };
+        const char* email = getenv("EMAIL");
         if (email) {
             return string(home) + "/mail/" + email + "/INBOX";
         } else {
@@ -88,7 +88,7 @@ maildir_status::maildir_status(istream& config)
 
 string maildir_status::update(system_clock::time_point)
 {
-    unsigned int n_new { 0 };
+    unsigned int n_new = 0;
     for (const auto& p : dirs) {
         n_new += count_files(p + "/new");
     }
