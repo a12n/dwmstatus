@@ -1,8 +1,8 @@
-#include <iostream>
-#include <thread>
-
 #include "config.hpp"
 #include "display.hpp"
+
+#include <iostream>
+#include <thread>
 
 namespace this_thread = std::this_thread;
 using namespace dwmstatus;
