@@ -1,11 +1,11 @@
-#include <sys/types.h>
+#include "maildir.hpp"
+
+#include <cstdlib>
 
 #include <dirent.h>
 #include <limits.h>
 
-#include <cstdlib>
-
-#include "maildir.hpp"
+#include <sys/types.h>
 
 namespace dwmstatus {
 namespace {
