@@ -5,19 +5,15 @@
 
 namespace dwmstatus {
 
-class time_status : public status_impl
-{
+class time_status : public status_impl {
 public:
     static constexpr auto default_pattern = "%a, %d %b %Y %T %Z";
 
-    explicit
-    time_status(const string& pattern = default_pattern);
+    explicit time_status(const string& pattern = default_pattern);
 
-    explicit
-    time_status(istream& config);
+    explicit time_status(istream& config);
 
-    virtual string
-    update(system_clock::time_point t) override;
+    virtual string update(system_clock::time_point t) override;
 
 private:
     const string pattern;
@@ -25,4 +21,4 @@ private:
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_TIME_HPP
+#endif // DWMSTATUS_TIME_HPP
