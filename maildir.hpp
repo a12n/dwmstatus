@@ -5,17 +5,13 @@
 
 namespace dwmstatus {
 
-class maildir_status : public status_impl
-{
+class maildir_status : public status_impl {
 public:
-    explicit
-    maildir_status(const set<string>& dir_set);
+    explicit maildir_status(const set<string>& dir_set);
 
-    explicit
-    maildir_status(istream& config);
+    explicit maildir_status(istream& config);
 
-    virtual string
-    update(system_clock::time_point t);
+    virtual string update(system_clock::time_point t);
 
 private:
     vector<string> dirs;
@@ -23,4 +19,4 @@ private:
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_MAILDIR_HPP
+#endif // DWMSTATUS_MAILDIR_HPP

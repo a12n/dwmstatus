@@ -12,32 +12,29 @@ namespace {
 
 using dir_ptr = unique_ptr<DIR, decltype(&closedir)>;
 
-dir_ptr
-open_dir(const string& path)
+dir_ptr open_dir(const string& path)
 {
-    dir_ptr ans{opendir(path.c_str()), closedir};
-    if (! ans) {
+    dir_ptr ans { opendir(path.c_str()), closedir };
+    if (!ans) {
         throw runtime_error("couldn't open directory \"" + path + "\"");
     }
     return ans;
 }
 
-string
-resolve_path(const string& path)
+string resolve_path(const string& path)
 {
     char ans[PATH_MAX];
-    if (! realpath(path.c_str(), ans)) {
+    if (!realpath(path.c_str(), ans)) {
         throw runtime_error("couldn't resolve path \"" + path + "\"");
     }
     return ans;
 }
 
-unsigned int
-count_files(const string& path)
+unsigned count_files(const string& path)
 {
-    unsigned int ans{0};
-    auto dir{open_dir(path)};
-    while (const auto f{readdir(dir.get())}) {
+    unsigned ans { 0 };
+    auto dir { open_dir(path) };
+    while (const auto f { readdir(dir.get()) }) {
         if (f->d_type == DT_REG) {
             ++ans;
         }
@@ -45,12 +42,11 @@ count_files(const string& path)
     return ans;
 }
 
-string
-default_dir()
+string default_dir()
 {
-    const char* home{getenv("HOME")};
+    const char* home { getenv("HOME") };
     if (home) {
-        const char* email{getenv("EMAIL")};
+        const char* email { getenv("EMAIL") };
         if (email) {
             return string(home) + "/mail/" + email + "/INBOX";
         } else {
@@ -61,8 +57,7 @@ default_dir()
     }
 }
 
-set<string>
-read_string_set(istream& config)
+set<string> read_string_set(istream& config)
 {
     set<string> ans;
     string dir;
@@ -74,8 +69,8 @@ read_string_set(istream& config)
 
 } // namespace
 
-maildir_status::maildir_status(const set<string>& dir_set) :
-    dirs(cbegin(dir_set), cend(dir_set))
+maildir_status::maildir_status(const set<string>& dir_set)
+    : dirs(cbegin(dir_set), cend(dir_set))
 {
     if (dirs.empty()) {
         dirs.emplace_back(default_dir());
@@ -86,15 +81,14 @@ maildir_status::maildir_status(const set<string>& dir_set) :
     dirs.shrink_to_fit();
 }
 
-maildir_status::maildir_status(istream& config) :
-    maildir_status(read_string_set(config))
+maildir_status::maildir_status(istream& config)
+    : maildir_status(read_string_set(config))
 {
 }
 
-string
-maildir_status::update(system_clock::time_point)
+string maildir_status::update(system_clock::time_point)
 {
-    unsigned int n_new{0};
+    unsigned int n_new { 0 };
     for (const auto& p : dirs) {
         n_new += count_files(p + "/new");
     }
