@@ -5,7 +5,7 @@
 
 namespace dwmstatus {
 
-class loadavg_status : public basic_status
+class loadavg_status : public status_impl
 {
 public:
     virtual string

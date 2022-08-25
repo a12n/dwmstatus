@@ -5,7 +5,7 @@
 
 namespace dwmstatus {
 
-class time_status : public basic_status
+class time_status : public status_impl
 {
 public:
     static constexpr auto default_pattern = "%a, %d %b %Y %T %Z";

@@ -7,7 +7,7 @@
 
 namespace dwmstatus {
 
-class utime_status : public basic_status
+class utime_status : public status_impl
 {
 public:
     static constexpr auto default_pattern = "EEEE, d MMMM yyyy HH:mm:ss";

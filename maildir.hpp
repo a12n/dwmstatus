@@ -5,7 +5,7 @@
 
 namespace dwmstatus {
 
-class maildir_status : public basic_status
+class maildir_status : public status_impl
 {
 public:
     explicit

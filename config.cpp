@@ -7,12 +7,13 @@
 #ifdef DWMSTATUS_WITH_UTIME
 #include "utime.hpp"
 #endif  // DWMSTATUS_WITH_UTIME
+#include "wlan.hpp"
 
 namespace dwmstatus {
 namespace {
 
-unique_ptr<basic_status>
-make_basic_status(const string& id, istream& config)
+unique_ptr<status_impl>
+make_status_impl(const string& id, istream& config)
 {
     if (id == "battery") { return make_unique<battery_status>(); }
     else if (id == "cputemp") { return make_unique<cputemp_status>(config); }
@@ -40,7 +41,7 @@ make_status(istream& config)
         throw runtime_error("update interval required in config");
     }
 
-    return make_unique<status>(seconds(interval), make_basic_status(id, config));
+    return make_unique<status>(seconds(interval), make_status_impl(id, config));
 }
 
 } // namespace

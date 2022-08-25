@@ -5,9 +5,9 @@
 
 namespace dwmstatus {
 
-class basic_status {
+class status_impl {
 public:
-    virtual ~basic_status() = default;
+    virtual ~status_impl() = default;
 
     virtual string update(system_clock::time_point t) = 0;
 };
@@ -16,13 +16,13 @@ public:
 
 class status {
 public:
-    status(seconds period, unique_ptr<basic_status> impl);
+    status(seconds period, unique_ptr<status_impl> impl);
 
     optional<string> update(system_clock::time_point t);
 
 private:
     const seconds period;
-    const unique_ptr<basic_status> impl;
+    const unique_ptr<status_impl> impl;
     system_clock::time_point t0;
 };
 

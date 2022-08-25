@@ -6,7 +6,7 @@
 
 namespace dwmstatus {
 
-class battery_status : public basic_status
+class battery_status : public status_impl
 {
 public:
     battery_status();

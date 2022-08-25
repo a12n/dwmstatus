@@ -6,7 +6,7 @@
 
 namespace dwmstatus {
 
-class cputemp_status : public basic_status
+class cputemp_status : public status_impl
 {
 public:
     explicit

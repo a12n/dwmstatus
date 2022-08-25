@@ -2,7 +2,7 @@
 
 namespace dwmstatus {
 
-status::status(seconds period, unique_ptr<basic_status> impl)
+status::status(seconds period, unique_ptr<status_impl> impl)
     : period { period }
     , impl { move(impl) }
     , t0 { system_clock::from_time_t(0) }
