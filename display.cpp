@@ -1,6 +1,6 @@
-#include <cstdio>
-
 #include "display.hpp"
+
+#include <cstdio>
 
 namespace dwmstatus {
 
