@@ -1,7 +1,8 @@
-#include <cmath>
-
 #include "battery.hpp"
+
 #include "blocks.hpp"
+
+#include <cmath>
 
 namespace dwmstatus {
 
