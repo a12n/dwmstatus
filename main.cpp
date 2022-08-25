@@ -10,15 +10,17 @@ using std::cin;
 
 namespace {
 
-string join(const vector<string>& strs, const string& sep)
+string join(const status_list& status, const char* sep)
 {
     string ans;
-    for (const auto& s : strs) {
+
+    for (const auto& s : status) {
         if (!ans.empty()) {
             ans += sep;
         }
-        ans += s;
+        ans += *s;
     }
+
     return ans;
 }
 
@@ -34,25 +36,23 @@ int main()
 
     auto& conf = cin;
     auto status = read_config(conf);
-    vector<string> status_str(status.size());
 
     while (true) {
         const auto t = system_clock::now();
         bool changed = false;
 
-        for (size_t i { 0 }; i < status.size(); ++i) {
-            const auto s { status[i]->update(t) };
-            if (s) {
-                status_str[i] = *s;
+        for (auto& s : status) {
+            if (s->update(t)) {
                 changed = true;
             }
         }
 
         if (changed) {
-            display.set_status(" " + join(status_str, " • ") + " ");
+            display.set_status(" " + join(status, " • ") + " ");
         }
 
         this_thread::sleep_until(t + seconds(1));
     }
+
     return 0;
 }

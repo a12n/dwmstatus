@@ -11,13 +11,14 @@ status::status(seconds period, unique_ptr<status_impl> impl)
     }
 }
 
-optional<string> status::update(system_clock::time_point t)
+bool status::update(system_clock::time_point t)
 {
     if ((t - t0) >= period || t < t0) {
+        str = impl->update(t);
         t0 = t;
-        return impl->update(t);
+        return true;
     } else {
-        return nullopt;
+        return false;
     }
 }
 

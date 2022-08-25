@@ -18,12 +18,18 @@ class status {
 public:
     status(seconds period, unique_ptr<status_impl> impl);
 
-    optional<string> update(system_clock::time_point t);
+    bool update(system_clock::time_point t);
+
+    inline operator const string&() const
+    {
+        return str;
+    }
 
 private:
     const seconds period;
     const unique_ptr<status_impl> impl;
     system_clock::time_point t0;
+    string str;
 };
 
 //----------------------------------------------------------------------------
