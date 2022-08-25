@@ -44,9 +44,9 @@ unique_ptr<status> make_status(istream& conf)
         throw runtime_error("a line in config must start with status identifier");
     }
 
-    unsigned int period;
+    int period;
 
-    if (!(conf >> period)) {
+    if (!(conf >> period) || period < 1) {
         throw runtime_error("update period required in config");
     }
 
