@@ -16,8 +16,6 @@ namespace dwmstatus {
 
 using std::cbegin;
 using std::cend;
-using std::chrono::seconds;
-using std::chrono::system_clock;
 using std::getline;
 using std::ifstream;
 using std::istream;
@@ -34,7 +32,9 @@ using std::string;
 using std::to_string;
 using std::unique_ptr;
 using std::vector;
+using std::chrono::seconds;
+using std::chrono::system_clock;
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_DECL_HPP
+#endif // DWMSTATUS_DECL_HPP
