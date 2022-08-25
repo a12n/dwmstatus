@@ -12,6 +12,8 @@ public:
     virtual string update(system_clock::time_point t) = 0;
 };
 
+unique_ptr<status_impl> make_status_impl(const string& id, istream& conf);
+
 //----------------------------------------------------------------------------
 
 class status {
