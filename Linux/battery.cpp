@@ -8,16 +8,15 @@ namespace dwmstatus {
 
 using std::ios_base;
 
-battery_status::battery::battery(const string& dir_path) :
-    status{dir_path + "/status"},
-    capacity{dir_path + "/capacity"}
+battery_status::battery::battery(const string& dir_path)
+    : status { dir_path + "/status" }
+    , capacity { dir_path + "/capacity" }
 {
 }
 
-short
-battery_status::battery::charging()
+short battery_status::battery::charging()
 {
-    const auto s{status.reread_value<string>().value_or("")};
+    const auto s { status.reread_value<string>().value_or("") };
     if (s == "Discharging") {
         return -1;
     } else if (s == "Charging") {
@@ -30,7 +29,7 @@ battery_status::battery::charging()
 battery_status::battery_status()
 {
     try {
-        for (int i{0}; ; ++i) {
+        for (int i { 0 };; ++i) {
             batteries.emplace_back("/sys/class/power_supply/BAT" + to_string(i));
         }
     } catch (const ios_base::failure&) {
@@ -38,18 +37,17 @@ battery_status::battery_status()
     }
 }
 
-string
-battery_status::update(system_clock::time_point)
+string battery_status::update(system_clock::time_point)
 {
-    auto charging{0};
-    auto capacity{0.0};
+    auto charging { 0 };
+    auto capacity { 0.0 };
 
     for (auto& b : batteries) {
         charging += b.charging();
         capacity += b.capacity.reread_value<double>().value_or(0.0);
     }
 
-    const auto pct{capacity / (100.0 * batteries.size())};
+    const auto pct { capacity / (100.0 * batteries.size()) };
 
     ostringstream out;
 
@@ -61,14 +59,14 @@ battery_status::update(system_clock::time_point)
     } else if (charging < 0) {
         out << "\033[33m";
     }
-#endif  // DWMSTATUS_WITH_COLOR
+#endif // DWMSTATUS_WITH_COLOR
 
     out.width(3);
     out << static_cast<int>(round(100.0 * pct)) << " %";
 
 #ifdef DWMSTATUS_WITH_COLOR
     out << "\033[0m";
-#endif  // DWMSTATUS_WITH_COLOR
+#endif // DWMSTATUS_WITH_COLOR
 
     return out.str();
 }
