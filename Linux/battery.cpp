@@ -49,26 +49,26 @@ string battery_status::update(system_clock::time_point)
 
     const auto pct = capacity / (100.0 * batteries.size());
 
-    ostringstream out;
+    ostringstream output;
 
 #ifdef DWMSTATUS_WITH_COLOR
     if (pct < 0.15) {
-        out << "\033[31m";
+        output << "\033[31m";
     } else if (charging > 0) {
-        out << "\033[32m";
+        output << "\033[32m";
     } else if (charging < 0) {
-        out << "\033[33m";
+        output << "\033[33m";
     }
 #endif // DWMSTATUS_WITH_COLOR
 
-    out.width(3);
-    out << static_cast<int>(round(100.0 * pct)) << " %";
+    output.width(3);
+    output << static_cast<int>(round(100.0 * pct)) << " %";
 
 #ifdef DWMSTATUS_WITH_COLOR
-    out << "\033[0m";
+    output << "\033[0m";
 #endif // DWMSTATUS_WITH_COLOR
 
-    return out.str();
+    return output.str();
 }
 
 } // namespace dwmstatus
