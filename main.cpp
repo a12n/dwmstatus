@@ -32,7 +32,7 @@ int main()
     term_display display;
 #endif // DWMSTATUS_WITH_X11
 
-    auto status { read_config(cin) };
+    auto status = read_config(cin);
     vector<string> status_str(status.size());
 
     while (true) {
