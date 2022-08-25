@@ -6,10 +6,10 @@ namespace dwmstatus {
 
 using std::ios_base;
 
-string
-loadavg_status::update(system_clock::time_point)
+string loadavg_status::update(system_clock::time_point)
 {
-    double ans[3]{ 0.0, 0.0, 0.0 };
+    double ans[3] { 0.0, 0.0, 0.0 };
+
     getloadavg(ans, 3);
     ostringstream out;
     out.precision(2);

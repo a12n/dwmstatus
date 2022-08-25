@@ -5,13 +5,11 @@
 
 namespace dwmstatus {
 
-class loadavg_status : public status_impl
-{
+class loadavg_status : public status_impl {
 public:
-    virtual string
-    update(system_clock::time_point t) override;
+    virtual string update(system_clock::time_point) override;
 };
 
 } // namespace dwmstatus
 
-#endif  // DWMSTATUS_LOADAVG_HPP
+#endif // DWMSTATUS_LOADAVG_HPP
