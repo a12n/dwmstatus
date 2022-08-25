@@ -36,8 +36,9 @@ int main()
     vector<string> status_str(status.size());
 
     while (true) {
-        const auto t { system_clock::now() };
-        bool changed { false };
+        const auto t = system_clock::now();
+        bool changed = false;
+
         for (size_t i { 0 }; i < status.size(); ++i) {
             const auto s { status[i]->update(t) };
             if (s) {
@@ -45,9 +46,11 @@ int main()
                 changed = true;
             }
         }
+
         if (changed) {
             display.set_status(" " + join(status_str, " • ") + " ");
         }
+
         this_thread::sleep_until(t + seconds(1));
     }
     return 0;
