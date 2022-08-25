@@ -16,14 +16,14 @@ public:
 
 class status {
 public:
-    explicit status(seconds interval, unique_ptr<basic_status> impl);
+    status(seconds period, unique_ptr<basic_status> impl);
 
     optional<string> update(system_clock::time_point t);
 
 private:
-    const seconds interval;
+    const seconds period;
     const unique_ptr<basic_status> impl;
-    system_clock::time_point last_t;
+    system_clock::time_point t0;
 };
 
 } // namespace dwmstatus

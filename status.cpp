@@ -2,10 +2,10 @@
 
 namespace dwmstatus {
 
-status::status(seconds s, unique_ptr<basic_status> p)
-    : interval { s }
-    , impl { move(p) }
-    , last_t { system_clock::from_time_t(0) }
+status::status(seconds period, unique_ptr<basic_status> impl)
+    : period { period }
+    , impl { move(impl) }
+    , t0 { system_clock::from_time_t(0) }
 {
     if (!impl) {
         throw runtime_error("basic status must be non-null");
@@ -14,8 +14,8 @@ status::status(seconds s, unique_ptr<basic_status> p)
 
 optional<string> status::update(system_clock::time_point t)
 {
-    if ((t - last_t) >= interval || t < last_t) {
-        last_t = t;
+    if ((t - t0) >= period || t < t0) {
+        t0 = t;
         return impl->update(t);
     } else {
         return nullopt;
