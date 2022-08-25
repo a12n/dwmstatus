@@ -1,6 +1,6 @@
-#include <cstdlib>
-
 #include "loadavg.hpp"
+
+#include <cstdlib>
 
 namespace dwmstatus {
 
