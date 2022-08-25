@@ -55,10 +55,10 @@ unique_ptr<status> make_status(istream& conf)
 
 } // namespace
 
-vector<unique_ptr<status>> read_config(istream& conf)
+status_list read_config(istream& conf)
 {
     string line;
-    vector<unique_ptr<status>> ans;
+    status_list ans;
     while (getline(conf, line)) {
         istringstream line_conf { line };
         ans.emplace_back(make_status(line_conf));

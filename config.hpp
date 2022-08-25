@@ -5,7 +5,7 @@
 
 namespace dwmstatus {
 
-vector<unique_ptr<status>> read_config(istream& conf);
+status_list read_config(istream& conf);
 
 //----------------------------------------------------------------------------
 
