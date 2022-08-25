@@ -21,10 +21,10 @@ time_status::time_status(istream& conf)
 
 string time_status::update(system_clock::time_point t)
 {
-    const auto t2 { system_clock::to_time_t(t) };
-    ostringstream out;
-    out << put_time(localtime(&t2), pattern.c_str());
-    return out.str();
+    const auto t2 = system_clock::to_time_t(t);
+    ostringstream output;
+    output << put_time(localtime(&t2), pattern.c_str());
+    return output.str();
 }
 
 } // namespace dwmstatus
