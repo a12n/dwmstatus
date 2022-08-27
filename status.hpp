@@ -40,6 +40,8 @@ unique_ptr<status> make_status(istream& conf);
 
 using status_list = vector<unique_ptr<status>>;
 
+status_list make_status_list(istream& conf);
+
 bool update_status_list(status_list& list, system_clock::time_point t);
 
 string format_status_list(const status_list& list, const char* sep);

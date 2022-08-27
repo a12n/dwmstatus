@@ -17,7 +17,7 @@ int main()
 #endif // DWMSTATUS_WITH_X11
 
     auto& conf = cin;
-    auto status = read_config(conf);
+    auto status = make_status_list(conf);
 
     while (true) {
         const auto t = system_clock::now();

@@ -76,6 +76,17 @@ unique_ptr<status> make_status(istream& conf)
 
 //----------------------------------------------------------------------------
 
+status_list make_status_list(istream& conf)
+{
+    string line;
+    status_list ans;
+    while (getline(conf, line)) {
+        istringstream line_conf { line };
+        ans.push_back(make_status(line_conf));
+    }
+    return ans;
+}
+
 bool update_status_list(status_list& list, system_clock::time_point t)
 {
     bool changed = false;
