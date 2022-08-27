@@ -34,6 +34,8 @@ private:
     string str;
 };
 
+unique_ptr<status> make_status(istream& conf);
+
 //----------------------------------------------------------------------------
 
 using status_list = vector<unique_ptr<status>>;

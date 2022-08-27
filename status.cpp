@@ -57,6 +57,25 @@ bool status::update(system_clock::time_point t)
     }
 }
 
+unique_ptr<status> make_status(istream& conf)
+{
+    string id;
+
+    if (!(conf >> quoted(id))) {
+        throw runtime_error("line in config must start with status identifier");
+    }
+
+    int period;
+
+    if (!(conf >> period) || period < 1) {
+        throw runtime_error("invalid or missing period in config");
+    }
+
+    return make_unique<status>(seconds(period), make_status_impl(id, conf));
+}
+
+//----------------------------------------------------------------------------
+
 bool update(status_list& list, system_clock::time_point t)
 {
     bool changed = false;
