@@ -76,7 +76,7 @@ unique_ptr<status> make_status(istream& conf)
 
 //----------------------------------------------------------------------------
 
-bool update(status_list& list, system_clock::time_point t)
+bool update_status_list(status_list& list, system_clock::time_point t)
 {
     bool changed = false;
     for (auto& s : list) {
@@ -87,7 +87,7 @@ bool update(status_list& list, system_clock::time_point t)
     return changed;
 }
 
-string format(const status_list& list, const char* sep)
+string format_status_list(const status_list& list, const char* sep)
 {
     string ans;
     for (const auto& s : list) {

@@ -22,8 +22,8 @@ int main()
     while (true) {
         const auto t = system_clock::now();
 
-        if (update(status, t)) {
-            display.set_status(" " + format(status, " • ") + " ");
+        if (update_status_list(status, t)) {
+            display.set_status(" " + format_status_list(status, " • ") + " ");
         }
 
         this_thread::sleep_until(t + seconds(1));
