@@ -5,10 +5,6 @@
 
 namespace dwmstatus {
 
-status_list read_config(istream& conf);
-
-//----------------------------------------------------------------------------
-
 template <typename T>
 optional<T> read_value(istream& conf)
 {
