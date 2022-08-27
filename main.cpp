@@ -39,15 +39,8 @@ int main()
 
     while (true) {
         const auto t = system_clock::now();
-        bool changed = false;
 
-        for (auto& s : status) {
-            if (s->update(t)) {
-                changed = true;
-            }
-        }
-
-        if (changed) {
+        if (update(status, t)) {
             display.set_status(" " + join(status, " • ") + " ");
         }
 

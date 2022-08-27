@@ -57,4 +57,15 @@ bool status::update(system_clock::time_point t)
     }
 }
 
+bool update(status_list& list, system_clock::time_point t)
+{
+    bool changed = false;
+    for (auto& s : list) {
+        if (s.update(t)) {
+            changed = true;
+        }
+    }
+    return changed;
+}
+
 } // namespace dwmstatus
