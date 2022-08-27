@@ -40,6 +40,8 @@ using status_list = vector<unique_ptr<status>>;
 
 bool update(status_list& list, system_clock::time_point t);
 
+string format(const status_list& list, const char* sep);
+
 } // namespace dwmstatus
 
 #endif // DWMSTATUS_STATUS_HPP

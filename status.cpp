@@ -68,4 +68,16 @@ bool update(status_list& list, system_clock::time_point t)
     return changed;
 }
 
+string format(const status_list& list, const char* sep)
+{
+    string ans;
+    for (const auto& s : status) {
+        if (!ans.empty()) {
+            ans += sep;
+        }
+        ans += *s;
+    }
+    return ans;
+}
+
 } // namespace dwmstatus

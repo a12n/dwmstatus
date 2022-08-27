@@ -8,24 +8,6 @@ namespace this_thread = std::this_thread;
 using namespace dwmstatus;
 using std::cin;
 
-namespace {
-
-string join(const status_list& status, const char* sep)
-{
-    string ans;
-
-    for (const auto& s : status) {
-        if (!ans.empty()) {
-            ans += sep;
-        }
-        ans += *s;
-    }
-
-    return ans;
-}
-
-} // namespace
-
 int main()
 {
 #ifdef DWMSTATUS_WITH_X11
@@ -41,7 +23,7 @@ int main()
         const auto t = system_clock::now();
 
         if (update(status, t)) {
-            display.set_status(" " + join(status, " • ") + " ");
+            display.set_status(" " + format(status, " • ") + " ");
         }
 
         this_thread::sleep_until(t + seconds(1));
