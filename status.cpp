@@ -61,7 +61,7 @@ bool update(status_list& list, system_clock::time_point t)
 {
     bool changed = false;
     for (auto& s : list) {
-        if (s.update(t)) {
+        if (s->update(t)) {
             changed = true;
         }
     }
@@ -71,7 +71,7 @@ bool update(status_list& list, system_clock::time_point t)
 string format(const status_list& list, const char* sep)
 {
     string ans;
-    for (const auto& s : status) {
+    for (const auto& s : list) {
         if (!ans.empty()) {
             ans += sep;
         }
