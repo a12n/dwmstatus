@@ -1,7 +1,7 @@
 #ifndef DWMSTATUS_CONFIG_HPP
 #define DWMSTATUS_CONFIG_HPP
 
-#include "status.hpp"
+#include "decl.hpp"
 
 namespace dwmstatus {
 
