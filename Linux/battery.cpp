@@ -1,6 +1,7 @@
 #include "battery.hpp"
 
 #include "blocks.hpp"
+#include "file.hpp"
 
 #include <cmath>
 
@@ -9,14 +10,14 @@ namespace dwmstatus {
 using std::ios_base;
 
 battery_status::battery::battery(const string& dir_path)
-    : status { dir_path + "/status" }
-    , capacity { dir_path + "/capacity" }
+    : status { open_unbuf(dir_path + "/status") }
+    , capacity { open_unbuf(dir_path + "/capacity") }
 {
 }
 
 short battery_status::battery::charging()
 {
-    const auto s = status.reread_value<string>().value_or("");
+    const auto s = reread_value<string>(status).value_or("");
     if (s == "Discharging") {
         return -1;
     } else if (s == "Charging") {
@@ -44,7 +45,7 @@ string battery_status::update(system_clock::time_point)
 
     for (auto& b : batteries) {
         charging += b.charging();
-        capacity += b.capacity.reread_value<double>().value_or(0.0);
+        capacity += reread_value<double>(b.capacity).value_or(0.0);
     }
 
     const auto pct = capacity / (100.0 * batteries.size());

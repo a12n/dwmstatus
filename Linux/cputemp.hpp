@@ -1,7 +1,6 @@
 #ifndef DWMSTATUS_LINUX_CPUTEMP_HPP
 #define DWMSTATUS_LINUX_CPUTEMP_HPP
 
-#include "pfile.hpp"
 #include "status.hpp"
 
 namespace dwmstatus {
@@ -15,7 +14,7 @@ public:
     virtual string update(system_clock::time_point t) override;
 
 private:
-    pfile hwmon;
+    ifstream hwmon;
 };
 
 } // namespace dwmstatus

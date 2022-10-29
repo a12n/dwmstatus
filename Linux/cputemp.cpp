@@ -1,11 +1,11 @@
 #include "cputemp.hpp"
 
-#include "config.hpp"
+#include "file.hpp"
 
 namespace dwmstatus {
 
 cputemp_status::cputemp_status(int i)
-    : hwmon { "/sys/class/hwmon/hwmon" + to_string(i) + "/temp1_input" }
+    : hwmon { open_unbuf("/sys/class/hwmon/hwmon" + to_string(i) + "/temp1_input") }
 {
 }
 
@@ -16,7 +16,7 @@ cputemp_status::cputemp_status(istream& config)
 
 string cputemp_status::update(system_clock::time_point)
 {
-    return to_string(static_cast<int>(hwmon.reread_value<double>().value_or(0.0) / 1000.0)) + " °C";
+    return to_string(static_cast<int>(reread_value<double>(hwmon).value_or(0.0) / 1000.0)) + " °C";
 }
 
 } // namespace dwmstatus

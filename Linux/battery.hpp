@@ -1,7 +1,6 @@
 #ifndef DWMSTATUS_LINUX_BATTERY_HPP
 #define DWMSTATUS_LINUX_BATTERY_HPP
 
-#include "pfile.hpp"
 #include "status.hpp"
 
 namespace dwmstatus {
@@ -18,8 +17,8 @@ private:
 
         short charging();
 
-        pfile status;
-        pfile capacity;
+        ifstream status;
+        ifstream capacity;
     };
 
     vector<battery> batteries;

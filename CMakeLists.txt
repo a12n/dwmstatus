@@ -23,8 +23,8 @@ add_executable(dwmstatus
   ${CMAKE_SYSTEM_NAME}/battery.cpp
   ${CMAKE_SYSTEM_NAME}/cputemp.cpp
   blocks.cpp
-  config.cpp
   display.cpp
+  file.cpp
   loadavg.cpp
   maildir.cpp
   main.cpp
