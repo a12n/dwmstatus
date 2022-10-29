@@ -1,5 +1,5 @@
-#include "config.hpp"
 #include "display.hpp"
+#include "status.hpp"
 
 #include <iostream>
 #include <thread>
