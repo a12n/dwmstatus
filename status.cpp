@@ -76,10 +76,10 @@ unique_ptr<status> make_status(istream& conf)
 
 //----------------------------------------------------------------------------
 
-status_list make_status_list(istream& conf)
+status_bar make_status_bar(istream& conf)
 {
     string line;
-    status_list ans;
+    status_bar ans;
     while (getline(conf, line)) {
         istringstream line_conf { line };
         ans.push_back(make_status(line_conf));
@@ -87,10 +87,10 @@ status_list make_status_list(istream& conf)
     return ans;
 }
 
-bool update_status_list(status_list& list, system_clock::time_point t)
+bool update_status_bar(status_bar& bar, system_clock::time_point t)
 {
     bool changed = false;
-    for (auto& s : list) {
+    for (auto& s : bar) {
         if (s->update(t)) {
             changed = true;
         }
@@ -98,10 +98,10 @@ bool update_status_list(status_list& list, system_clock::time_point t)
     return changed;
 }
 
-string format_status_list(const status_list& list, const char* sep)
+string format_status_bar(const status_bar& bar, const char* sep)
 {
     string ans;
-    for (const auto& s : list) {
+    for (const auto& s : bar) {
         if (!ans.empty()) {
             ans += sep;
         }
