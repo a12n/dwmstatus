@@ -1,5 +1,7 @@
 #include "maildir.hpp"
 
+#include "color.hpp"
+
 #include <cstdlib>
 
 #include <dirent.h>
@@ -89,10 +91,23 @@ maildir_status::maildir_status(istream& config)
 string maildir_status::update(system_clock::time_point)
 {
     unsigned n_new = 0;
+
     for (const auto& p : dirs) {
         n_new += count_files(p + "/new");
     }
-    return to_string(n_new);
+
+    ostringstream output;
+
+    if (n_new > 0) {
+        output << color::fg::green;
+    }
+#ifdef DWMSTATUS_WITH_ICONS
+    output << " ";
+#endif  // DWMSTATUS_WITH_ICONS
+    output << n_new
+           << color::reset;
+
+    return output.str();
 }
 
 } // namespace dwmstatus
