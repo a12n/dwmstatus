@@ -1,5 +1,6 @@
 #include "cputemp.hpp"
 
+#include "color.hpp"
 #include "file.hpp"
 
 namespace dwmstatus {
@@ -16,7 +17,20 @@ cputemp_status::cputemp_status(istream& config)
 
 string cputemp_status::update(system_clock::time_point)
 {
-    return to_string(static_cast<int>(reread_value<double>(hwmon).value_or(0.0) / 1000.0)) + " °C";
+    const auto temp = (reread_value<int>(hwmon).value_or(0) + 500) / 1000;
+
+    ostringstream output;
+
+    if (temp > 80) {
+        output << color::fg::red;
+    }
+#ifdef DWMSTATUS_WITH_ICONS
+    output << " ";
+#endif  // DWMSTATUS_WITH_ICONS
+    output << temp << " °C"
+           << color::reset;
+
+    return output.str();
 }
 
 } // namespace dwmstatus
