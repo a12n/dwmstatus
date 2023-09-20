@@ -9,6 +9,7 @@
 namespace dwmstatus {
 
 using std::ios_base;
+using std::setw;
 
 battery_status::battery::battery(const string& dir_path)
     : status { open_unbuf(dir_path + "/status") }
@@ -61,8 +62,7 @@ string battery_status::update(system_clock::time_point)
         output << color::fg::yellow;
     }
 
-    output.width(3);
-    output << static_cast<int>(round(100.0 * pct)) << " %";
+    output << setw(3) << static_cast<int>(round(100.0 * pct)) << " %";
 
     output << color::reset;
 
