@@ -1,6 +1,7 @@
 #include "battery.hpp"
 
 #include "blocks.hpp"
+#include "color.hpp"
 #include "file.hpp"
 
 #include <cmath>
@@ -52,22 +53,18 @@ string battery_status::update(system_clock::time_point)
 
     ostringstream output;
 
-#ifdef DWMSTATUS_WITH_COLOR
     if (pct < 0.15) {
-        output << "\033[31m";
+        output << color::fg::red;
     } else if (charging > 0) {
-        output << "\033[32m";
+        output << color::fg::green;
     } else if (charging < 0) {
-        output << "\033[33m";
+        output << color::fg::yellow;
     }
-#endif // DWMSTATUS_WITH_COLOR
 
     output.width(3);
     output << static_cast<int>(round(100.0 * pct)) << " %";
 
-#ifdef DWMSTATUS_WITH_COLOR
-    output << "\033[0m";
-#endif // DWMSTATUS_WITH_COLOR
+    output << color::reset;
 
     return output.str();
 }
