@@ -15,6 +15,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(DWMSTATUS_WITH_X11 "Build X11 display module." ON)
 option(DWMSTATUS_WITH_UTIME "Build localized time module." ON)
 option(DWMSTATUS_WITH_COLOR "Build with ANSI colors in output." ON)
+option(DWMSTATUS_WITH_ICONS "Enable icons in status strings." ON)
 
 #------------------------------------------------------------------------------
 # Targets
@@ -53,6 +54,10 @@ endif(DWMSTATUS_WITH_UTIME)
 if(DWMSTATUS_WITH_COLOR)
   target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_COLOR)
 endif(DWMSTATUS_WITH_COLOR)
+
+if(DWMSTATUS_WITH_ICONS)
+  target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_ICONS)
+endif(DWMSTATUS_WITH_ICONS)
 
 #------------------------------------------------------------------------------
 # Installation
