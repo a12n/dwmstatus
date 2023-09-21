@@ -9,6 +9,7 @@ const vector<string> battery { "", "", "", "", "" };
 const vector<string> hourglass { "", "", "" };
 const vector<string> thermometer { "", "", "", "", "" };
 
+const string envelope = "";
 const string microchip = "";
 const string wifi = "";
 

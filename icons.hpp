@@ -12,6 +12,7 @@ extern const vector<string> battery;
 extern const vector<string> hourglass;
 extern const vector<string> thermometer;
 
+extern const string envelope;
 extern const string microchip;
 extern const string wifi;
 
