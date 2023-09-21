@@ -4,13 +4,15 @@
 #include "decl.hpp"
 
 namespace dwmstatus {
+namespace blocks {
 
-extern const vector<string> horiz_blocks;
-extern const vector<string> shade_blocks;
-extern const vector<string> vert_blocks;
+extern const vector<string> horiz;
+extern const vector<string> shade;
+extern const vector<string> vert;
 
-string choose_block(const vector<string>& table, double pct);
+string choose(const vector<string>& table, double pct);
 
+} // namespace blocks
 } // namespace dwmstatus
 
 #endif // DWMSTATUS_BLOCKS_HPP

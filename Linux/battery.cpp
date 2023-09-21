@@ -64,7 +64,7 @@ string battery_status::update(system_clock::time_point)
 
     output
 #ifdef DWMSTATUS_WITH_ICONS
-        << choose_block({ "", "", "", "", "" }, pct) << ' '
+        << blocks::choose({ "", "", "", "", "" }, pct) << ' '
 #endif  // DWMSTATUS_WITH_ICONS
         << setw(3) << static_cast<int>(round(100 * pct)) << " %";
 

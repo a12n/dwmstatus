@@ -1,12 +1,13 @@
 #include "blocks.hpp"
 
 namespace dwmstatus {
+namespace blocks {
 
-const vector<string> horiz_blocks { " ", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█" };
-const vector<string> shade_blocks { " ", "░", "▒", "▓", "█" };
-const vector<string> vert_blocks { " ", "▁", "▂", "▃", "▅", "▆", "▇", "█" };
+const vector<string> horiz { " ", "▏", "▎", "▍", "▌", "▋", "▊", "▉", "█" };
+const vector<string> shade { " ", "░", "▒", "▓", "█" };
+const vector<string> vert { " ", "▁", "▂", "▃", "▅", "▆", "▇", "█" };
 
-string choose_block(const vector<string>& table, double pct)
+string choose(const vector<string>& table, double pct)
 {
     if (pct < 0.0) {
         pct = 0.0;
@@ -16,4 +17,5 @@ string choose_block(const vector<string>& table, double pct)
     return table[pct * (table.size() - 1) + 0.5];
 }
 
+} // namespace blocks
 } // namespace dwmstatus
