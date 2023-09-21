@@ -9,8 +9,6 @@
 
 namespace dwmstatus {
 
-using std::setw;
-
 wlan_status::wlan_status(const string& iface)
     : iface { iface }
     , wireless { open_unbuf("/proc/net/wireless") }
@@ -61,7 +59,8 @@ string wlan_status::update(system_clock::time_point)
     if (quality < 0) {
         output << "---";
     } else {
-        output << setw(3) << static_cast<int>(round(100 * quality));
+        output.width(3);
+        output << static_cast<int>(round(100 * quality));
     }
     output << " %"
            << color::reset;

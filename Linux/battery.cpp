@@ -10,7 +10,6 @@
 namespace dwmstatus {
 
 using std::ios_base;
-using std::setw;
 
 battery_status::battery::battery(const string& dir_path)
     : status { open_unbuf(dir_path + "/status") }
