@@ -26,19 +26,19 @@ string wlan_status::update(system_clock::time_point)
 
     ostringstream output;
 
-    if (quality < 0) {
+    if (pct < 0) {
         output << color::fg::white;
-    } else if (quality < 0.25) {
+    } else if (pct < 0.25) {
         output << color::fg::red;
-    } else if (quality < 0.50) {
+    } else if (pct < 0.50) {
         output << color::fg::yellow;
     }
     output << icons::awesome::wifi << ' ';
-    if (quality < 0) {
+    if (pct < 0) {
         output << "---";
     } else {
         output.width(3);
-        output << static_cast<int>(round(100 * quality));
+        output << static_cast<int>(round(100 * pct));
     }
     output << " %"
            << color::reset;
