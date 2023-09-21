@@ -53,6 +53,18 @@ string wlan_status::update(system_clock::time_point)
     output << " %"
            << color::reset;
 
+    // if (pct < 0) {
+    //     output << icons::material::wifi_off << " ------";
+    // } else {
+    //     auto id = essid();
+    //     if (id.size() > 6) {
+    //         id.resize(5);
+    //         id += "…";
+    //     }
+    //     output << blocks::choose(icons::material::wifi, pct) << ' ' << id;
+    // }
+    // output << color::reset;
+
     return output.str();
 }
 
