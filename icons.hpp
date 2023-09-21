@@ -6,7 +6,7 @@
 namespace dwmstatus {
 namespace icons {
 
-namespace awesome {             // Font Awesome
+namespace awesome { // Font Awesome
 
 extern const vector<string> battery;
 extern const vector<string> hourglass;
@@ -18,7 +18,7 @@ extern const string wifi;
 
 } // namespace awesome
 
-namespace material {            // Material Icons
+namespace material { // Material Icons
 
 extern const vector<string> battery;
 extern const vector<string> network_wifi;
