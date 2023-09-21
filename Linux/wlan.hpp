@@ -14,6 +14,8 @@ public:
     virtual string update(system_clock::time_point t) override;
 
 private:
+    double quality();
+
     string iface;
     ifstream wireless;
 };

@@ -22,29 +22,7 @@ wlan_status::wlan_status(istream& conf)
 
 string wlan_status::update(system_clock::time_point)
 {
-    double quality = -1;
-
-    rewind(wireless);
-    skip_line(wireless, 2);
-
-    while (const auto line_opt = read_line(wireless)) {
-        istringstream line { line_opt.value() };
-
-        auto name = read_value<string>(line).value_or(":");
-        name.pop_back();     // Trim ':' at the end of interface name.
-
-        if (iface.empty()) {
-            // Interface wasn't specified, use the first one.
-            iface = name;
-        }
-
-        if (iface == name) {
-            // Found entry for the interface.
-            skip_value<int>(line);
-            quality = read_value<double>(line).value_or(0.0) / 70;
-            break;
-        }
-    }
+    const double pct = quality();
 
     ostringstream output;
 
@@ -66,6 +44,32 @@ string wlan_status::update(system_clock::time_point)
            << color::reset;
 
     return output.str();
+}
+
+double wlan_status::quality()
+{
+    rewind(wireless);
+    skip_line(wireless, 2);
+
+    while (const auto line_opt = read_line(wireless)) {
+        istringstream line { line_opt.value() };
+
+        auto name = read_value<string>(line).value_or(":");
+        name.pop_back();     // Trim ':' at the end of interface name.
+
+        if (iface.empty()) {
+            // Interface wasn't specified, use the first one.
+            iface = name;
+        }
+
+        if (iface == name) {
+            // Found entry for the interface.
+            skip_value<int>(line);
+            return read_value<double>(line).value_or(0.0) / 70;
+        }
+    }
+
+    return -1;
 }
 
 } // namespace dwmstatus
