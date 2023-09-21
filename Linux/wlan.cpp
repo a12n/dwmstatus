@@ -3,6 +3,7 @@
 #include "blocks.hpp"
 #include "color.hpp"
 #include "file.hpp"
+#include "icons.hpp"
 
 #include <cmath>
 
@@ -56,12 +57,7 @@ string wlan_status::update(system_clock::time_point)
     } else if (quality < 0.50) {
         output << color::fg::yellow;
     }
-
-#ifdef DWMSTATUS_WITH_ICONS
-    output << " ";
-#else  // DWMSTATUS_WITH_ICONS
-    output << iface << ' ';
-#endif // DWMSTATUS_WITH_ICONS
+    output << icons::awesome::wifi << ' ';
     if (quality < 0) {
         output << "---";
     } else {
