@@ -6,13 +6,23 @@
 #include "icons.hpp"
 
 #include <cmath>
+#include <cstring>
+
+#include <sys/ioctl.h>
+#include <sys/socket.h>
+
+#include <linux/wireless.h>
 
 namespace dwmstatus {
 
 wlan_status::wlan_status(const string& iface)
     : iface { iface }
     , wireless { open_unbuf("/proc/net/wireless") }
+    , iwreq_fd { socket(AF_INET, SOCK_DGRAM, 0) }
 {
+    if (iwreq_fd < 0) {
+        throw runtime_error("couldn't open socket");
+    }
 }
 
 wlan_status::wlan_status(istream& conf)
@@ -70,6 +80,31 @@ double wlan_status::quality()
     }
 
     return -1;
+}
+
+string wlan_status::essid()
+{
+    if (iface.empty()) {
+        return "";
+    } else if (iface.size() > (IFNAMSIZ - 1)) {
+        throw runtime_error("bad interface name \"" + iface + "\"");
+    }
+
+    iwreq req;
+
+    memset(&req, 0, sizeof(iwreq));
+    memcpy(req.ifr_name, iface.data(), iface.size());
+
+    char buf[IW_ESSID_MAX_SIZE + 1];
+
+    req.u.essid.length = sizeof(buf);
+    req.u.essid.pointer = buf;
+
+    if (ioctl(iwreq_fd, SIOCGIWESSID, &req) < 0) {
+        throw runtime_error("ioctl");
+    }
+
+    return buf;
 }
 
 } // namespace dwmstatus

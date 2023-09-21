@@ -15,9 +15,11 @@ public:
 
 private:
     double quality();
+    string essid();
 
     string iface;
     ifstream wireless;
+    int iwreq_fd;
 };
 
 } // namespace dwmstatus
