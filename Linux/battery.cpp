@@ -3,6 +3,7 @@
 #include "blocks.hpp"
 #include "color.hpp"
 #include "file.hpp"
+#include "icons.hpp"
 
 #include <cmath>
 
@@ -64,7 +65,7 @@ string battery_status::update(system_clock::time_point)
 
     output
 #ifdef DWMSTATUS_WITH_ICONS
-        << blocks::choose({ "", "", "", "", "" }, pct) << ' '
+        << blocks::choose(icons::awesome::battery, pct) << ' '
 #endif  // DWMSTATUS_WITH_ICONS
         << setw(3) << static_cast<int>(round(100 * pct)) << " %";
 
