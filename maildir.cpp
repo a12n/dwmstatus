@@ -1,6 +1,7 @@
 #include "maildir.hpp"
 
 #include "color.hpp"
+#include "icons.hpp"
 
 #include <cstdlib>
 
@@ -101,10 +102,7 @@ string maildir_status::update(system_clock::time_point)
     if (n_new > 0) {
         output << color::fg::green;
     }
-#ifdef DWMSTATUS_WITH_ICONS
-    output << " ";
-#endif  // DWMSTATUS_WITH_ICONS
-    output << n_new
+    output << icons::awesome::envelope << ' ' << n_new
            << color::reset;
 
     return output.str();
