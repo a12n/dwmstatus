@@ -27,6 +27,7 @@ add_executable(dwmstatus
   blocks.cpp
   display.cpp
   file.cpp
+  icons.cpp
   loadavg.cpp
   maildir.cpp
   main.cpp
