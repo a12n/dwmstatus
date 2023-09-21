@@ -1,7 +1,9 @@
 #include "cputemp.hpp"
 
+#include "blocks.hpp"
 #include "color.hpp"
 #include "file.hpp"
+#include "icons.hpp"
 
 namespace dwmstatus {
 
@@ -24,10 +26,8 @@ string cputemp_status::update(system_clock::time_point)
     if (temp > 80) {
         output << color::fg::red;
     }
-#ifdef DWMSTATUS_WITH_ICONS
-    output << " ";
-#endif  // DWMSTATUS_WITH_ICONS
-    output << temp << " °C"
+    output << blocks::choose(icons::awesome::thermometer, temp / 80.0) << ' '
+           << temp << " °C"
            << color::reset;
 
     return output.str();
