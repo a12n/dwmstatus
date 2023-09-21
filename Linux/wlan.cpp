@@ -77,7 +77,7 @@ double wlan_status::quality()
         istringstream line { line_opt.value() };
 
         auto name = read_value<string>(line).value_or(":");
-        name.pop_back();     // Trim ':' at the end of interface name.
+        name.pop_back(); // Trim ':' at the end of interface name.
 
         if (iface.empty()) {
             // Interface wasn't specified, use the first one.
