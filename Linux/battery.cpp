@@ -62,14 +62,9 @@ string battery_status::update(system_clock::time_point)
     } else if (charging < 0) {
         output << color::fg::yellow;
     }
-
-    output
-#ifdef DWMSTATUS_WITH_ICONS
-        << blocks::choose(icons::awesome::battery, pct) << ' '
-#endif  // DWMSTATUS_WITH_ICONS
-        << setw(3) << static_cast<int>(round(100 * pct)) << " %";
-
-    output << color::reset;
+    output << blocks::choose(icons::awesome::battery, pct) << ' '
+           << static_cast<int>(round(100 * pct)) << " %"
+           << color::reset;
 
     return output.str();
 }
