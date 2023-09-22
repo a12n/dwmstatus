@@ -6,11 +6,11 @@
 namespace dwmstatus {
 namespace blocks {
 
-extern const vector<string> horiz;
-extern const vector<string> shade;
-extern const vector<string> vert;
+extern const vector<string_view> horiz;
+extern const vector<string_view> shade;
+extern const vector<string_view> vert;
 
-string choose(const vector<string>& table, double pct);
+string choose(const vector<string_view>& table, double pct);
 
 } // namespace blocks
 } // namespace dwmstatus

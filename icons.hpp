@@ -8,9 +8,9 @@ namespace icons {
 
 namespace awesome { // Font Awesome
 
-extern const vector<string> battery;
-extern const vector<string> hourglass;
-extern const vector<string> thermometer;
+extern const vector<string_view> battery;
+extern const vector<string_view> hourglass;
+extern const vector<string_view> thermometer;
 
 constexpr auto envelope = "";
 constexpr auto microchip = "";
@@ -20,9 +20,9 @@ constexpr auto wifi = "";
 
 namespace material { // Material Icons
 
-extern const vector<string> battery;
-extern const vector<string> network_wifi;
-extern const vector<string> wifi;
+extern const vector<string_view> battery;
+extern const vector<string_view> network_wifi;
+extern const vector<string_view> wifi;
 
 constexpr auto battery_alert = "";
 constexpr auto battery_charging_full = "";

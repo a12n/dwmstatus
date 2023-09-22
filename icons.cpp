@@ -5,17 +5,17 @@ namespace icons {
 
 namespace awesome {
 
-const vector<string> battery { "", "", "", "", "" };
-const vector<string> hourglass { "", "", "" };
-const vector<string> thermometer { "", "", "", "", "" };
+const vector<string_view> battery { "", "", "", "", "" };
+const vector<string_view> hourglass { "", "", "" };
+const vector<string_view> thermometer { "", "", "", "", "" };
 
 } // namespace awesome
 
 namespace material {
 
-const vector<string> battery { "", "", "", "", "", "", "", "" };
-const vector<string> network_wifi { "", "", "", "" };
-const vector<string> wifi { "", "", "" };
+const vector<string_view> battery { "", "", "", "", "", "", "", "" };
+const vector<string_view> network_wifi { "", "", "", "" };
+const vector<string_view> wifi { "", "", "" };
 
 } // namespace material
 
