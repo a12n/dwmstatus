@@ -12,7 +12,7 @@
 
 namespace dwmstatus {
 
-unique_ptr<status_impl> make_status_impl(const string& id, istream& conf)
+unique_ptr<status_impl> make_status_impl(string_view id, istream& conf)
 {
     if (id == "battery") {
         return make_unique<battery_status>();
@@ -100,7 +100,7 @@ bool update_status_bar(status_bar& bar, system_clock::time_point t)
     return changed;
 }
 
-string format_status_bar(const status_bar& bar, const char* sep)
+string format_status_bar(const status_bar& bar, string_view sep)
 {
     string ans;
     for (const auto& s : bar) {
