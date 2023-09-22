@@ -7,7 +7,7 @@ namespace dwmstatus {
 
 class cputemp_status : public status_impl {
 public:
-    explicit cputemp_status(int i = 0);
+    explicit cputemp_status(unsigned i = 0);
 
     explicit cputemp_status(istream& config);
 

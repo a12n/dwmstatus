@@ -7,13 +7,13 @@
 
 namespace dwmstatus {
 
-cputemp_status::cputemp_status(int i)
+cputemp_status::cputemp_status(unsigned i)
     : hwmon { open_unbuf("/sys/class/hwmon/hwmon" + to_string(i) + "/temp1_input") }
 {
 }
 
 cputemp_status::cputemp_status(istream& config)
-    : cputemp_status(read_value<unsigned int>(config).value_or(0))
+    : cputemp_status(read_value<unsigned>(config).value_or(0))
 {
 }
 
