@@ -9,7 +9,7 @@ class time_status : public status_impl {
 public:
     static constexpr auto default_pattern = "%a, %d %b %Y %T %Z";
 
-    explicit time_status(const string& pattern = default_pattern);
+    explicit time_status(string_view pattern = default_pattern);
 
     explicit time_status(istream& conf);
 

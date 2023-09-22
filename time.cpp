@@ -9,7 +9,7 @@ namespace dwmstatus {
 using std::localtime;
 using std::put_time;
 
-time_status::time_status(const string& pattern)
+time_status::time_status(string_view pattern)
     : pattern(pattern)
 {
 }
