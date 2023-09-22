@@ -8,7 +8,7 @@
 
 namespace dwmstatus {
 
-utime_status::utime_status(const string& pattern)
+utime_status::utime_status(string_view pattern)
 {
     UErrorCode err = U_ZERO_ERROR;
     fmt = make_unique<icu::SimpleDateFormat>(icu::UnicodeString::fromUTF8(pattern), err);

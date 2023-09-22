@@ -11,7 +11,7 @@ class utime_status : public status_impl {
 public:
     static constexpr auto default_pattern = "EEEE, d MMMM yyyy HH:mm:ss Z";
 
-    explicit utime_status(const string& pattern = default_pattern);
+    explicit utime_status(string_view pattern = default_pattern);
 
     explicit utime_status(istream& conf);
 
