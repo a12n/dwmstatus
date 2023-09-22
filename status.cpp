@@ -81,12 +81,12 @@ unique_ptr<status> make_status(istream& conf)
 status_bar make_status_bar(istream& conf)
 {
     string line;
-    status_bar ans;
+    status_bar bar;
     while (getline(conf, line)) {
         istringstream line_conf { line };
-        ans.push_back(make_status(line_conf));
+        bar.push_back(make_status(line_conf));
     }
-    return ans;
+    return bar;
 }
 
 bool update_status_bar(status_bar& bar, system_clock::time_point t)
