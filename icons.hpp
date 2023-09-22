@@ -12,9 +12,9 @@ extern const vector<string> battery;
 extern const vector<string> hourglass;
 extern const vector<string> thermometer;
 
-extern const string envelope;
-extern const string microchip;
-extern const string wifi;
+constexpr auto envelope = "";
+constexpr auto microchip = "";
+constexpr auto wifi = "";
 
 } // namespace awesome
 
@@ -24,11 +24,11 @@ extern const vector<string> battery;
 extern const vector<string> network_wifi;
 extern const vector<string> wifi;
 
-extern const string battery_alert;
-extern const string battery_charging_full;
-extern const string battery_saver;
-extern const string network_wifi_off;
-extern const string wifi_off;
+constexpr auto battery_alert = "";
+constexpr auto battery_charging_full = "";
+constexpr auto battery_saver = "";
+constexpr auto network_wifi_off = "";
+constexpr auto wifi_off = "";
 
 } // namespace material
 
