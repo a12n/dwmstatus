@@ -4,6 +4,7 @@
 #include <chrono>
 #include <fstream>
 #include <iomanip>
+#include <iostream>
 #include <memory>
 #include <optional>
 #include <set>
@@ -16,6 +17,7 @@ namespace dwmstatus {
 
 using std::cbegin;
 using std::cend;
+using std::cout;
 using std::getline;
 using std::ifstream;
 using std::istream;

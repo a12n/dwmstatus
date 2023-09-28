@@ -5,18 +5,15 @@
 
 namespace dwmstatus {
 
-class display {
-public:
+struct display {
     virtual ~display() = default;
-
-    virtual void set_status(const string&) = 0;
+    virtual void set_status(string_view) = 0;
 };
 
 //----------------------------------------------------------------------------
 
-class term_display : public display {
-public:
-    virtual void set_status(const string& s) override;
+struct term_display : display {
+    virtual void set_status(string_view) override;
 };
 
 } // namespace dwmstatus
@@ -28,11 +25,9 @@ public:
 
 namespace dwmstatus {
 
-class x11_display : public display {
-public:
+struct x11_display : display {
     x11_display();
-
-    virtual void set_status(const string& s) override;
+    virtual void set_status(string_view) override;
 
 private:
     unique_ptr<xcb_connection_t, decltype(&xcb_disconnect)> conn;

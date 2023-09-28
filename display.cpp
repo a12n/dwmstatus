@@ -4,9 +4,9 @@
 
 namespace dwmstatus {
 
-void term_display::set_status(const string& s)
+void term_display::set_status(string_view str)
 {
-    puts(s.c_str());
+    cout.write(str.data(), str.size()).put('\n');
 }
 
 #ifdef DWMSTATUS_WITH_X11
@@ -22,11 +22,11 @@ x11_display::x11_display()
     root = xcb_setup_roots_iterator(xcb_get_setup(conn.get())).data->root;
 }
 
-void x11_display::set_status(const string& s)
+void x11_display::set_status(string_view str)
 {
     xcb_change_property(conn.get(), XCB_PROP_MODE_REPLACE, root,
                         XCB_ATOM_WM_NAME, XCB_ATOM_STRING,
-                        8, s.size(), s.data());
+                        8, str.size(), str.data());
     xcb_flush(conn.get());
 }
 
