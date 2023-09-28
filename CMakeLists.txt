@@ -43,7 +43,7 @@ target_include_directories(dwmstatus
 if(DWMSTATUS_WITH_X11)
   find_package(X11 REQUIRED)
   target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_X11)
-  target_link_libraries(dwmstatus PRIVATE X11::X11)
+  target_link_libraries(dwmstatus PRIVATE X11::xcb)
 endif(DWMSTATUS_WITH_X11)
 
 if(DWMSTATUS_WITH_UTIME)

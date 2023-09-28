@@ -23,7 +23,8 @@ public:
 
 #ifdef DWMSTATUS_WITH_X11
 
-#include <X11/Xlib.h>
+#include <xcb/xcb.h>
+#include <xcb/xproto.h>
 
 namespace dwmstatus {
 
@@ -34,7 +35,8 @@ public:
     virtual void set_status(const string& s) override;
 
 private:
-    unique_ptr<Display, decltype(&XCloseDisplay)> dpy;
+    unique_ptr<xcb_connection_t, decltype(&xcb_disconnect)> conn;
+    xcb_window_t root;
 };
 
 } // namespace dwmstatus
