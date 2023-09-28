@@ -6,7 +6,7 @@ namespace dwmstatus {
 
 void term_display::set_status(string_view str)
 {
-    cout.write(str.data(), str.size()).put('\n');
+    cout << str << endl;
 }
 
 #ifdef DWMSTATUS_WITH_X11

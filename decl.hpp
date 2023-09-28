@@ -18,6 +18,7 @@ namespace dwmstatus {
 using std::cbegin;
 using std::cend;
 using std::cout;
+using std::endl;
 using std::getline;
 using std::ifstream;
 using std::istream;
