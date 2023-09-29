@@ -69,6 +69,18 @@ private:
     system_clock::time_point t0_;
 };
 
+struct bar : abstract_status {
+    bar(vector<status_ptr> items, string_view sep, string_view prefix, string_view suffix);
+    virtual optional<string> update(system_clock::time_point t) override;
+
+private:
+    vector<status_ptr> items_;
+    vector<string> str_;
+    string sep_;
+    string prefix_;
+    string suffix_;
+};
+
 } // namespace dwmstatus
 
 #endif // DWMSTATUS_STATUS_HPP
