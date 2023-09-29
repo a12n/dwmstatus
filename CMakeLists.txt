@@ -26,6 +26,7 @@ add_executable(dwmstatus
   ${CMAKE_SYSTEM_NAME}/cputemp.cpp
   ${CMAKE_SYSTEM_NAME}/wlan.cpp
   ${DWMSTATUS_OS}/battery.cpp
+  ${DWMSTATUS_OS}/cpu_temp.cpp
   blocks.cpp
   display.cpp
   file.cpp
