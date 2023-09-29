@@ -1,4 +1,4 @@
-#include "status/load_avg.hpp"
+#include "load_avg.hpp"
 
 #include <cstdlib>
 

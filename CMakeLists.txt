@@ -30,11 +30,11 @@ add_executable(dwmstatus
   display.cpp
   file.cpp
   icons.cpp
+  load_avg.cpp
+  mail_dir.cpp
   main.cpp
   status.cpp
-  status/load_avg.cpp
-  status/mail_dir.cpp
-  status/time.cpp
+  time.cpp
   )
 target_include_directories(dwmstatus
   PRIVATE
@@ -54,7 +54,7 @@ if(DWMSTATUS_WITH_ICU)
   target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_ICU)
   target_link_libraries(dwmstatus PRIVATE ICU::i18n ICU::uc)
   target_sources(dwmstatus PRIVATE utime.cpp)
-  target_sources(dwmstatus PRIVATE status/unicode_time.cpp)
+  target_sources(dwmstatus PRIVATE unicode_time.cpp)
 endif(DWMSTATUS_WITH_ICU)
 
 if(DWMSTATUS_WITH_COLOR)

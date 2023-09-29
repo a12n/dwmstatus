@@ -1,4 +1,4 @@
-#include "status/mail_dir.hpp"
+#include "mail_dir.hpp"
 
 #include "color.hpp"
 #include "icons.hpp"
