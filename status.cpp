@@ -112,4 +112,24 @@ string format_status_bar(const status_bar& bar, string_view sep)
     return ans;
 }
 
+//----------------------------------------------------------------------------
+
+periodic::periodic(status_ptr status, seconds period)
+    : status_ { move(status) }
+    , period_ { period }
+{
+}
+
+optional<string> periodic::update(system_clock::time_point t)
+{
+    if (t > t0_ && (t - t0_) < period_) {
+        return nullopt;
+    }
+    t0_ = t;
+    if (!status_) {
+        return nullopt;
+    }
+    return status_->update(t);
+}
+
 } // namespace dwmstatus

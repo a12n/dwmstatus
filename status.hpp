@@ -59,6 +59,16 @@ struct abstract_status {
 
 using status_ptr = unique_ptr<abstract_status>;
 
+struct periodic : abstract_status {
+    periodic(status_ptr status, seconds period);
+    virtual optional<string> update(system_clock::time_point) override;
+
+private:
+    status_ptr status_;
+    seconds period_;
+    system_clock::time_point t0_;
+};
+
 } // namespace dwmstatus
 
 #endif // DWMSTATUS_STATUS_HPP
