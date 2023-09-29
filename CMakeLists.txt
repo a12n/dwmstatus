@@ -33,6 +33,7 @@ add_executable(dwmstatus
   main.cpp
   status.cpp
   status/time.cpp
+  status/unicode_time.cpp
   time.cpp
   )
 target_include_directories(dwmstatus
