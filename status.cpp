@@ -5,9 +5,9 @@
 #include "loadavg.hpp"
 #include "maildir.hpp"
 #include "time.hpp"
-#ifdef DWMSTATUS_WITH_UTIME
+#ifdef DWMSTATUS_WITH_ICU
 #include "utime.hpp"
-#endif // DWMSTATUS_WITH_UTIME
+#endif // DWMSTATUS_WITH_ICU
 #include "wlan.hpp"
 
 namespace dwmstatus {
@@ -25,11 +25,11 @@ unique_ptr<status_impl> make_status_impl(string_view id, istream& conf)
     } else if (id == "time") {
         return make_unique<time_status>(conf);
     }
-#ifdef DWMSTATUS_WITH_UTIME
+#ifdef DWMSTATUS_WITH_ICU
     else if (id == "utime") {
         return make_unique<utime_status>(conf);
     }
-#endif // DWMSTATUS_WITH_UTIME
+#endif // DWMSTATUS_WITH_ICU
     else if (id == "wlan") {
         return make_unique<wlan_status>(conf);
     } else {
