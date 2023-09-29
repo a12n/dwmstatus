@@ -1,16 +1,10 @@
 #include "status.hpp"
 
-#include "wlan.hpp"
-
 namespace dwmstatus {
 
 unique_ptr<status_impl> make_status_impl(string_view id, istream& conf)
 {
-    if (id == "wlan") {
-        return make_unique<wlan_status>(conf);
-    } else {
-        throw runtime_error("unknown status identifier");
-    }
+    throw runtime_error("unknown status identifier");
 }
 
 //----------------------------------------------------------------------------

@@ -23,7 +23,6 @@ option(DWMSTATUS_WITH_ICONS "Enable icons in status strings." ON)
 string(TOLOWER ${CMAKE_SYSTEM_NAME} DWMSTATUS_OS)
 
 add_executable(dwmstatus
-  ${CMAKE_SYSTEM_NAME}/wlan.cpp
   ${DWMSTATUS_OS}/battery.cpp
   ${DWMSTATUS_OS}/cpu_temp.cpp
   ${DWMSTATUS_OS}/wlan.cpp
