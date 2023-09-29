@@ -25,8 +25,8 @@ x11_display::x11_display()
 void x11_display::set_status(string_view str)
 {
     xcb_change_property(conn.get(), XCB_PROP_MODE_REPLACE, root,
-                        XCB_ATOM_WM_NAME, XCB_ATOM_STRING,
-                        8, str.size(), str.data());
+        XCB_ATOM_WM_NAME, XCB_ATOM_STRING,
+        8, str.size(), str.data());
     xcb_flush(conn.get());
 }
 
