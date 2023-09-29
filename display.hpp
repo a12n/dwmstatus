@@ -32,8 +32,8 @@ struct x11_display : abstract_display {
     virtual void set_status(string_view) override;
 
 private:
-    unique_ptr<xcb_connection_t, decltype(&xcb_disconnect)> conn;
-    xcb_window_t root;
+    unique_ptr<xcb_connection_t, decltype(&xcb_disconnect)> conn_;
+    xcb_window_t root_;
 };
 
 } // namespace dwmstatus
