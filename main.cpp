@@ -22,7 +22,16 @@ int main()
         display_ptr display = make_unique<dwmstatus::stdout>();
         status_ptr status = make_unique<dwmstatus::time>();
 
+        {
+#include "config.inc"
+        }
 
+        if (!display) {
+            throw invalid_argument("unspecified display in configuration");
+        }
+        if (!status) {
+            throw invalid_argument("unspecified status in configuration");
+        }
 
         while (true) {
             const auto t = system_clock::now();
