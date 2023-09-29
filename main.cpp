@@ -1,5 +1,13 @@
+#include "battery.hpp"
+#include "cpu_temp.hpp"
 #include "display.hpp"
+#include "file.hpp"
+#include "load_avg.hpp"
+#include "mail_dir.hpp"
 #include "status.hpp"
+#include "time.hpp"
+#include "unicode_time.hpp"
+#include "wlan.hpp"
 
 #include <iostream>
 #include <thread>
