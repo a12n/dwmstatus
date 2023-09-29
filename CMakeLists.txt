@@ -32,6 +32,7 @@ add_executable(dwmstatus
   maildir.cpp
   main.cpp
   status.cpp
+  status/time.cpp
   time.cpp
   )
 target_include_directories(dwmstatus
