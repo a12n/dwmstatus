@@ -1,6 +1,7 @@
 #ifndef DWMSTATUS_DECL_HPP
 #define DWMSTATUS_DECL_HPP
 
+#include <algorithm>
 #include <chrono>
 #include <fstream>
 #include <iomanip>
@@ -17,6 +18,7 @@ namespace dwmstatus {
 
 using std::cbegin;
 using std::cend;
+using std::clamp;
 using std::cout;
 using std::endl;
 using std::fixed;
