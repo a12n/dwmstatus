@@ -12,28 +12,30 @@
 #include <iostream>
 #include <thread>
 
-namespace this_thread = std::this_thread;
-using namespace dwmstatus;
-using std::cin;
-
 int main()
 {
-#ifdef DWMSTATUS_WITH_X11
-    x11_display dpy;
-#else // DWMSTATUS_WITH_X11
-    term_display dpy;
-#endif // DWMSTATUS_WITH_X11
+    using namespace dwmstatus;
+    using namespace std::chrono;
+    using namespace std;
 
-    auto bar = make_status_bar(cin);
+    try {
+        display_ptr display = make_unique<dwmstatus::stdout>();
+        status_ptr status = make_unique<dwmstatus::time>();
 
-    while (true) {
-        const auto t = system_clock::now();
 
-        if (update_status_bar(bar, t)) {
-            dpy.set_status(" " + format_status_bar(bar, " • ") + " ");
+
+        while (true) {
+            const auto t = system_clock::now();
+
+            if (const auto s = status->update(t); s) {
+                display->set_status(s.value());
+            }
+
+            this_thread::sleep_until(t + seconds(1));
         }
-
-        this_thread::sleep_until(t + seconds(1));
+    } catch (const exception& err) {
+        cerr << err.what() << endl;
+        return 1;
     }
 
     return 0;
