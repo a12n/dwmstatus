@@ -23,7 +23,9 @@ private:
 };
 
 struct bar : abstract_status {
-    bar(vector<status_ptr> items, string_view sep = " • ", string_view prefix = "", string_view suffix = "");
+    static constexpr auto default_sep = " • ";
+
+    bar(vector<status_ptr> items, string_view sep = default_sep, string_view prefix = "", string_view suffix = "");
     virtual optional<string> update(system_clock::time_point t) override;
 
 private:
