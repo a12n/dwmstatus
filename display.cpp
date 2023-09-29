@@ -4,7 +4,7 @@
 
 namespace dwmstatus {
 
-void term_display::set_status(string_view str)
+void stdout::set_status(string_view str)
 {
     cout << str << endl;
 }
@@ -13,7 +13,7 @@ void term_display::set_status(string_view str)
 
 //----------------------------------------------------------------------------
 
-x11_display::x11_display()
+window_property::window_property()
     : conn_(xcb_connect(nullptr, nullptr), xcb_disconnect)
 {
     if (xcb_connection_has_error(conn_.get())) {
@@ -22,7 +22,7 @@ x11_display::x11_display()
     root_ = xcb_setup_roots_iterator(xcb_get_setup(conn_.get())).data->root;
 }
 
-void x11_display::set_status(string_view str)
+void window_property::set_status(string_view str)
 {
     xcb_change_property(conn_.get(), XCB_PROP_MODE_REPLACE, root_,
         XCB_ATOM_WM_NAME, XCB_ATOM_STRING,

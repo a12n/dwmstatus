@@ -14,8 +14,10 @@ using display_ptr = unique_ptr<abstract_display>;
 
 //----------------------------------------------------------------------------
 
-struct term_display : abstract_display {
-    virtual void set_status(string_view) override;
+// stdout prints status string to standard output, for spectrwm and
+// other WMs reading bar's output.
+struct stdout : abstract_display {
+    virtual void set_status(string_view str) override;
 };
 
 } // namespace dwmstatus
@@ -27,9 +29,11 @@ struct term_display : abstract_display {
 
 namespace dwmstatus {
 
-struct x11_display : abstract_display {
-    x11_display();
-    virtual void set_status(string_view) override;
+// window_property writes status string to WM_NAME property of X root
+// window, for DWM.
+struct window_property : abstract_display {
+    window_property();
+    virtual void set_status(string_view str) override;
 
 private:
     unique_ptr<xcb_connection_t, decltype(&xcb_disconnect)> conn_;
