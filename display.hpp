@@ -5,14 +5,16 @@
 
 namespace dwmstatus {
 
-struct display {
-    virtual ~display() = default;
-    virtual void set_status(string_view) = 0;
+struct abstract_display {
+    virtual ~abstract_display() = default;
+    virtual void set_status(string_view str) = 0;
 };
+
+using display_ptr = unique_ptr<abstract_display>;
 
 //----------------------------------------------------------------------------
 
-struct term_display : display {
+struct term_display : abstract_display {
     virtual void set_status(string_view) override;
 };
 
@@ -25,7 +27,7 @@ struct term_display : display {
 
 namespace dwmstatus {
 
-struct x11_display : display {
+struct x11_display : abstract_display {
     x11_display();
     virtual void set_status(string_view) override;
 
