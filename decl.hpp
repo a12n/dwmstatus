@@ -22,6 +22,7 @@ using std::endl;
 using std::fixed;
 using std::getline;
 using std::ifstream;
+using std::invalid_argument;
 using std::istream;
 using std::istringstream;
 using std::make_unique;
