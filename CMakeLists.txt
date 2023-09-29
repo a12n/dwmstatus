@@ -23,7 +23,6 @@ option(DWMSTATUS_WITH_ICONS "Enable icons in status strings." ON)
 string(TOLOWER ${CMAKE_SYSTEM_NAME} DWMSTATUS_OS)
 
 add_executable(dwmstatus
-  ${CMAKE_SYSTEM_NAME}/battery.cpp
   ${CMAKE_SYSTEM_NAME}/cputemp.cpp
   ${CMAKE_SYSTEM_NAME}/wlan.cpp
   ${DWMSTATUS_OS}/battery.cpp
@@ -31,14 +30,11 @@ add_executable(dwmstatus
   display.cpp
   file.cpp
   icons.cpp
-  loadavg.cpp
-  maildir.cpp
   main.cpp
   status.cpp
   status/load_avg.cpp
   status/mail_dir.cpp
   status/time.cpp
-  time.cpp
   )
 target_include_directories(dwmstatus
   PRIVATE

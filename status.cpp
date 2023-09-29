@@ -1,36 +1,15 @@
 #include "status.hpp"
 
-#include "battery.hpp"
 #include "cputemp.hpp"
-#include "loadavg.hpp"
-#include "maildir.hpp"
-#include "time.hpp"
-#ifdef DWMSTATUS_WITH_ICU
-#include "utime.hpp"
-#endif // DWMSTATUS_WITH_ICU
 #include "wlan.hpp"
 
 namespace dwmstatus {
 
 unique_ptr<status_impl> make_status_impl(string_view id, istream& conf)
 {
-    if (id == "battery") {
-        return make_unique<battery_status>();
-    } else if (id == "cputemp") {
+    if (id == "cputemp") {
         return make_unique<cputemp_status>(conf);
-    } else if (id == "loadavg") {
-        return make_unique<loadavg_status>();
-    } else if (id == "maildir") {
-        return make_unique<maildir_status>(conf);
-    } else if (id == "time") {
-        return make_unique<time_status>(conf);
-    }
-#ifdef DWMSTATUS_WITH_ICU
-    else if (id == "utime") {
-        return make_unique<utime_status>(conf);
-    }
-#endif // DWMSTATUS_WITH_ICU
-    else if (id == "wlan") {
+    } else if (id == "wlan") {
         return make_unique<wlan_status>(conf);
     } else {
         throw runtime_error("unknown status identifier");
