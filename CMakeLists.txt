@@ -53,7 +53,6 @@ if(DWMSTATUS_WITH_ICU)
   find_package(ICU REQUIRED COMPONENTS i18n uc)
   target_compile_definitions(dwmstatus PRIVATE -DDWMSTATUS_WITH_ICU)
   target_link_libraries(dwmstatus PRIVATE ICU::i18n ICU::uc)
-  target_sources(dwmstatus PRIVATE utime.cpp)
   target_sources(dwmstatus PRIVATE unicode_time.cpp)
 endif(DWMSTATUS_WITH_ICU)
 
