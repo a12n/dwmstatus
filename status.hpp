@@ -48,4 +48,17 @@ string format_status_bar(const status_bar& bar, string_view sep);
 
 } // namespace dwmstatus
 
+//----------------------------------------------------------------------------
+
+namespace dwmstatus {
+
+struct abstract_status {
+    virtual ~abstract_status() = default;
+    virtual optional<string> update(system_clock::time_point t) = 0;
+};
+
+using status_ptr = unique_ptr<abstract_status>;
+
+} // namespace dwmstatus
+
 #endif // DWMSTATUS_STATUS_HPP
