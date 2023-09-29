@@ -30,6 +30,7 @@ using std::move;
 using std::nullopt;
 using std::optional;
 using std::ostringstream;
+using std::put_time;
 using std::quoted;
 using std::runtime_error;
 using std::set;
