@@ -16,8 +16,6 @@
 
 namespace dwmstatus {
 
-using std::cbegin;
-using std::cend;
 using std::clamp;
 using std::cout;
 using std::endl;
