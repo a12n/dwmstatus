@@ -1,5 +1,5 @@
-#ifndef DWMSTATUS_STATUS_MAIL_DIR_HPP
-#define DWMSTATUS_STATUS_MAIL_DIR_HPP
+#ifndef DWMSTATUS_MAIL_DIR_HPP
+#define DWMSTATUS_MAIL_DIR_HPP
 
 #include "status.hpp"
 
@@ -15,4 +15,4 @@ private:
 
 } // namespace dwmstatus
 
-#endif // DWMSTATUS_STATUS_MAIL_DIR_HPP
+#endif // DWMSTATUS_MAIL_DIR_HPP

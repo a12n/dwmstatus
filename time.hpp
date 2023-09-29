@@ -1,5 +1,5 @@
-#ifndef DWMSTATUS_STATUS_TIME_HPP
-#define DWMSTATUS_STATUS_TIME_HPP
+#ifndef DWMSTATUS_TIME_HPP
+#define DWMSTATUS_TIME_HPP
 
 #include "status.hpp"
 
@@ -17,4 +17,4 @@ private:
 
 } // namespace dwmstatus
 
-#endif // DWMSTATUS_STATUS_TIME_HPP
+#endif // DWMSTATUS_TIME_HPP

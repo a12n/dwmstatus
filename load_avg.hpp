@@ -1,5 +1,5 @@
-#ifndef DWMSTATUS_STATUS_LOAD_AVG_HPP
-#define DWMSTATUS_STATUS_LOAD_AVG_HPP
+#ifndef DWMSTATUS_LOAD_AVG_HPP
+#define DWMSTATUS_LOAD_AVG_HPP
 
 #include "status.hpp"
 
@@ -11,4 +11,4 @@ struct load_avg : abstract_status {
 
 } // namespace dwmstatus
 
-#endif // DWMSTATUS_STATUS_LOAD_AVG_HPP
+#endif // DWMSTATUS_LOAD_AVG_HPP
