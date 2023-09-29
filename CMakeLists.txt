@@ -33,6 +33,7 @@ add_executable(dwmstatus
   main.cpp
   status.cpp
   status/load_avg.cpp
+  status/mail_dir.cpp
   status/time.cpp
   status/unicode_time.cpp
   time.cpp
