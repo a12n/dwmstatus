@@ -12,7 +12,7 @@ struct time : abstract_status {
     virtual optional<string> update(system_clock::time_point t) override;
 
 private:
-    string pattern;
+    string fmt_;
 };
 
 } // namespace dwmstatus
