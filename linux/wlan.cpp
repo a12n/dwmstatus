@@ -18,11 +18,11 @@ namespace dwmstatus {
 wlan::wlan(const string& iface)
     : iface_ { iface }
     , wireless_ { open_unbuf("/proc/net/wireless") }
-    , fd_ { socket(AF_INET, SOCK_DGRAM, 0) }
+    // , fd_ { socket(AF_INET, SOCK_DGRAM, 0) }
 {
-    if (fd_ < 0) {
-        throw runtime_error("wlan: couldn't open socket");
-    }
+    // if (fd_ < 0) {
+    //     throw runtime_error("wlan: couldn't open socket");
+    // }
 }
 
 optional<string> wlan::update(system_clock::time_point)
